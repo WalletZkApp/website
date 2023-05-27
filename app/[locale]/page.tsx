@@ -1,0 +1,32 @@
+"use client";
+
+import Features from "@/components/features";
+import Footer from "@/components/footer";
+import Hero from "@/components/hero";
+import Investors from "@/components/investors";
+import Navigation from "@/components/navigation";
+import Team from "@/components/team";
+import { ThemeContext } from "@/context/theme_context";
+import { useTranslations } from "next-intl";
+import { useContext } from "react";
+
+export default function Page() {
+  const t = useTranslations("Index");
+  const { theme } = useContext(ThemeContext);
+  return (
+    <>
+      <div
+        className={`${
+          theme === "light" ? "text-black bg-white" : "text-white bg-[#10172a]"
+        } transition-all`}
+      >
+        <Navigation />
+        <Hero />
+        <Features />
+        <Team />
+        <Investors />
+        <Footer />
+      </div>
+    </>
+  );
+}
