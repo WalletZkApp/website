@@ -1,10 +1,11 @@
 import { ThemeContext } from "@/context/theme_context";
 import { Button } from "@mui/material";
 import { useTranslations } from "next-intl";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 function Collection() {
   const t = useTranslations("Index");
+  const [currentLength, setCurrentLength] = useState(10);
   const { theme } = useContext(ThemeContext);
   return (
     <div id="collection" className="max-w-7xl mx-auto p-5 py-12 lg:py-16">
@@ -27,7 +28,7 @@ function Collection() {
               theme === "light" ? "bg-white border" : "bg-background"
             } drop-shadow-md `}
           >
-            {collections.map((x, index) => {
+            {collections.slice(0, currentLength).map((x, index) => {
               return (
                 <tr
                   key={index}
@@ -39,9 +40,13 @@ function Collection() {
                 >
                   <td className="text-left">
                     <div className="flex items-center space-x-8">
-                      <div>{index + 1}</div>
+                      <div className="w-[20px]">{index + 1}</div>
                       <div className="flex items-center space-x-3">
-                        <img src={x.avatar} alt="" />
+                        <img
+                          className="h-[2.5rem] w-[2.5rem] rounded-md"
+                          src={x.avatar}
+                          alt=""
+                        />
                         <div className="whitespace-nowrap font-semibold">
                           {x.label}
                         </div>
@@ -91,7 +96,10 @@ function Collection() {
             })}
           </tbody>
         </table>
+      </div>
+      {currentLength === 10 ? (
         <div
+          onClick={() => setCurrentLength(collections.length)}
           className={`${
             theme === "light" ? "bg-gray-100" : "bg-gray-700"
           } mt-8 p-5 rounded-md cursor-pointer hover:brightness-[0.99]`}
@@ -101,10 +109,12 @@ function Collection() {
               theme === "light" ? "text-gd" : "text-white"
             }`}
           >
-            View All Collections
+            {t("View All Collections")}
           </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
@@ -132,7 +142,7 @@ const collections: collection[] = [
     owners: 6,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_2.png",
     label: "Otherdeed",
     floorPrice: 1.568,
     floorChange: 89.2,
@@ -142,7 +152,7 @@ const collections: collection[] = [
     owners: 33.3,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_3.png",
     label: "MutantApeYachtClub",
     floorPrice: 12.46,
     floorChange: -3.3,
@@ -152,7 +162,7 @@ const collections: collection[] = [
     owners: 11.9,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_4.png",
     label: "HV-MTL",
     floorPrice: 1.98,
     floorChange: -2.5,
@@ -162,7 +172,7 @@ const collections: collection[] = [
     owners: 8.8,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_5.png",
     label: "Wrapped Cryptopunks",
     floorPrice: 74.83,
     floorChange: 0,
@@ -172,7 +182,7 @@ const collections: collection[] = [
     owners: 110,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_6.png",
     label: "V1 Cryptopunks (Wrapped)",
     floorPrice: 4.278,
     floorChange: 4.3,
@@ -182,7 +192,7 @@ const collections: collection[] = [
     owners: 982,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_7.png",
     label: "Azuki",
     floorPrice: 13.2,
     floorChange: -25.7,
@@ -192,7 +202,7 @@ const collections: collection[] = [
     owners: 5,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_8.png",
     label: "MG Land",
     floorPrice: 0.036,
     floorChange: 5.9,
@@ -202,7 +212,7 @@ const collections: collection[] = [
     owners: 2.4,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_9.png",
     label: "Nakamigos",
     floorPrice: 0.019,
     floorChange: -52.5,
@@ -212,8 +222,128 @@ const collections: collection[] = [
     owners: 4.1,
   },
   {
-    avatar: "/assets/avatars/avatar_1.png",
+    avatar: "/assets/avatars/avatar_10.png",
     label: "CloneX",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_11.png",
+    label: "ZKWALLET",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 5.089,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_12.png",
+    label: "SZBIT",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_13.png",
+    label: "SPEPE",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_14.png",
+    label: "SOSHI",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_15.png",
+    label: "SMAP0",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_16.png",
+    label: "SXING",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_17.png",
+    label: "Sub 100k",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_18.png",
+    label: "Pixel Pepes",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_19.png",
+    label: "Bitcoin Frogs",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_20.png",
+    label: "Sat Names",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_21.png",
+    label: "Pepe & Pepita",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 147.8,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
+  {
+    avatar: "/assets/avatars/avatar_22.png",
+    label: "Sub 10K",
     floorPrice: 3.34,
     floorChange: -2.3,
     volume: 147.8,

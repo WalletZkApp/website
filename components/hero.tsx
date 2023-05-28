@@ -19,7 +19,7 @@ function Hero() {
           </div>
           <form className="flex flex-col md:flex-row md:items-center md:space-x-5 mt-8">
             <input
-              className="bg-white px-5 py-3 drop-shadow-lg w-full md:w-[20rem] rounded-md"
+              className="bg-white px-5 py-3 drop-shadow-lg w-full md:w-[20rem] rounded-md text-black"
               placeholder={t("Enter your email")}
               required
             />

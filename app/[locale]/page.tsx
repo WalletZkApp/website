@@ -3,6 +3,7 @@
 import Collection from "@/components/collection";
 import Features from "@/components/features";
 import Footer from "@/components/footer";
+import Form from "@/components/form";
 import Hero from "@/components/hero";
 import Investors from "@/components/investors";
 import Navigation from "@/components/navigation";
@@ -25,6 +26,7 @@ export default function Page() {
         <Collection />
         <Team />
         <Investors />
+        <Form />
         <Footer />
       </div>
     </>

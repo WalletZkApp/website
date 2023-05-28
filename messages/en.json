@@ -1,6 +1,5 @@
 {
     "Index": {
-      "title": "Hello world!",
       "Features" : "Features",
       "Timeline" : "Timeline",
       "Investor/Partners" : "Investor/Partners",
@@ -43,6 +42,9 @@
       "Get Help" : "Get Help",
       "Security Center" : "Security Center",
       "Developer Docs" : "Developer Docs",
-      "Contact Us" : "Contact Us"
+      "Contact Us" : "Contact Us",
+      "Subscribe to Our Newsletter" : "Subcribe to Our Newsletter",
+      "Subscribe" : "Subcribe",
+      "Languages" : "Languages"
     }
   }

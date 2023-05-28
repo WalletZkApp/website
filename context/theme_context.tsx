@@ -15,6 +15,7 @@ export default function ThemeHandler({
   const [theme, setTheme] = useState("light");
 
   const changeTheme = (mode: string) => {
+    localStorage.setItem("theme", mode.toString());
     setTheme(mode);
   };
 

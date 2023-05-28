@@ -20,6 +20,10 @@ html {
   background: linear-gradient(96.71deg, #F9D240 0%, #ECAC18 101.64%);
 }
 
+.background-gd {
+  background : linear-gradient(147.31deg, rgba(141, 141, 236, 0.167177) 45.74%, rgba(84, 84, 212, 0.0001) 86.05%)
+}
+ 
 th,td {
   padding : 1rem;
   padding-inline: 2rem;

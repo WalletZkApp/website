@@ -14,13 +14,13 @@ function Footer() {
         }`}
       >
         <div className="max-w-7xl p-5 mx-auto">
-          <div className="flex flex-col space-y-5 md:flex-row md:space-y-0 justify-between">
+          <div className="flex flex-col space-y-12 lg:flex-row lg:space-y-0 justify-between">
             <div>
               <img src="/logo.png" alt="" />
               <div className="uppercase mt-5 text-gray-400 font-medium">
                 {t("Contact Us")}
               </div>
-              <div className="grid grid-cols-5 gap-5 mt-5">
+              <div className="grid grid-cols-3 md:grid-cols-5 gap-5 mt-5">
                 {socials.map((x) => {
                   return (
                     <Link href={x.href} key={x.href} target="_blank">
@@ -31,6 +31,20 @@ function Footer() {
                       >
                         <img src={x.icon} alt="" />
                       </div>
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="mt-5">{t("Languages")}</div>
+              <div className="flex items-center space-x-2 md:space-x-5 mt-5">
+                {languages.map((x) => {
+                  return (
+                    <Link href={x.href} key={x.flag}>
+                      <img
+                        className="h-[2rem] rounded-md cursor-pointer hover:translate-y-[-5%] transition-all"
+                        src={x.flag}
+                        alt=""
+                      />
                     </Link>
                   );
                 })}
@@ -96,6 +110,33 @@ function Footer() {
     </>
   );
 }
+
+const languages = [
+  {
+    flag: "/assets/flags/us.png",
+    href: "/en",
+  },
+  {
+    flag: "/assets/flags/indonesia.png",
+    href: "/id",
+  },
+  {
+    flag: "/assets/flags/spain.png",
+    href: "/es",
+  },
+  {
+    flag: "/assets/flags/china.png",
+    href: "/cn",
+  },
+  {
+    flag: "/assets/flags/netherlands.png",
+    href: "/nl",
+  },
+  {
+    flag: "/assets/flags/turkey.png",
+    href: "/tr",
+  },
+];
 
 const security = [
   {

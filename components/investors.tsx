@@ -12,10 +12,10 @@ function Investors() {
       <div className="text-[1.5rem] md:text-[2.5rem] font-semibold">
         {t("Investor / Partners")}
       </div>
-      <div className="grid grid-cols-5 gap-12 lg:gap-16 mt-10">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-12 lg:gap-16 mt-10">
         {investors.map((x) => {
           return (
-            <div className="flex justify-center items-center">
+            <div key={x} className="flex justify-center items-center">
               <img className="h-[5rem] object-contain" key={x} src={x} alt="" />
             </div>
           );
