@@ -12,6 +12,7 @@ html {
 .text-gd {
   background: linear-gradient(94.59deg, #AC78E3 7.54%, #804BDB 36.55%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -19,6 +20,7 @@ html {
   background: linear-gradient(96.71deg, #F9D240 0%, #ECAC18 101.64%);
 }
 
-.MuiButton-root {
-  background: linear-gradient(to right, #ad5389, #3c1053)!important;
+th,td {
+  padding : 1rem;
+  padding-inline: 2rem;
 }

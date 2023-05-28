@@ -1,12 +1,14 @@
 "use client";
 
-import { IconButton } from "@mui/material";
 import { useTranslations } from "use-intl";
 
 function Features() {
   const t = useTranslations("Index");
   return (
-    <div className="max-w-7xl p-5 mx-auto py-12 lg:pt-16 lg:pb-24">
+    <div
+      id="features"
+      className="max-w-7xl p-5 mx-auto py-12 lg:pt-16 lg:pb-24"
+    >
       <div className="text-center text-gd font-semibold text-[1.5rem] md:text-[3rem]">
         {t("Features")}
       </div>

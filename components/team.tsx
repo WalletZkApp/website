@@ -10,6 +10,7 @@ function Team() {
 
   return (
     <div
+      id="team"
       style={{
         background:
           "linear-gradient(147.31deg, rgba(141, 141, 236, 0.167177) 45.74%, rgba(84, 84, 212, 0.0001) 86.05%)",
@@ -19,14 +20,14 @@ function Team() {
         <div className="text-[1.5rem] md:text-[2.5rem] font-semibold">
           {t("Meet Our Team")}
         </div>
-        <div className="grid grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5 md:mt-12">
           {team.map((x) => {
             return (
               <div
                 key={x.label}
                 className={`p-12 py-24 flex flex-col items-center ${
                   theme === "light" ? "bg-white" : "bg-[#10172a]"
-                } drop-shadow-lg rounded-lg`}
+                } drop-shadow-lg rounded-lg hover:translate-y-[-5%] transition-all cursor-pointer`}
               >
                 <img src={x.image} alt="" />
                 <div className="mt-8 text-[1.5rem]">{x.label}</div>

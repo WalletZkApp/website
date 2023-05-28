@@ -4,7 +4,7 @@ import { ThemeContext } from "@/context/theme_context";
 import { useContext } from "react";
 import { useTranslations } from "use-intl";
 
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -35,7 +35,15 @@ function Navigation() {
         </div>
         <div className="hidden md:flex items-center space-x-8">
           {menuList.map((x) => {
-            return <div key={x.href}>{t(x.label)}</div>;
+            return (
+              <a
+                className="hover:text-primary cursor-pointer transition-all"
+                key={x.href}
+                href={x.href}
+              >
+                {t(x.label)}
+              </a>
+            );
           })}
           <button className="button-gd text-white font-semibold p-2 px-3 rounded-md">
             Connect Wallet
@@ -49,19 +57,19 @@ function Navigation() {
 const menuList = [
   {
     label: "Features",
-    href: "#Features",
+    href: "#features",
   },
   {
     label: "Timeline",
-    href: "#Timeline",
+    href: "#collection",
   },
   {
     label: "Investor/Partners",
-    href: "#Investor",
+    href: "#investors",
   },
   {
     label: "Meet The Team",
-    href: "#Team",
+    href: "#team",
   },
 ];
 

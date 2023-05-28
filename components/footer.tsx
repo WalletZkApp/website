@@ -1,12 +1,18 @@
+import { ThemeContext } from "@/context/theme_context";
 import Link from "next/link";
-import React from "react";
+import { useContext } from "react";
 import { useTranslations } from "use-intl";
 
 function Footer() {
   const t = useTranslations("Index");
+  const { theme } = useContext(ThemeContext);
   return (
     <>
-      <div className="py-12 lg:py-16 border-y">
+      <div
+        className={`border-y py-12 lg:py-16 ${
+          theme === "light" ? "" : "border-gray-700"
+        }`}
+      >
         <div className="max-w-7xl p-5 mx-auto">
           <div className="flex flex-col space-y-5 md:flex-row md:space-y-0 justify-between">
             <div>
@@ -18,7 +24,11 @@ function Footer() {
                 {socials.map((x) => {
                   return (
                     <Link href={x.href} key={x.href} target="_blank">
-                      <div className="border p-3 flex justify-center items-center rounded-full h-[3.5rem] w-[3.5rem]">
+                      <div
+                        className={`border ${
+                          theme === "light" ? "" : "border-gray-700"
+                        } hover:translate-y-[5%] hover:brightness-[0.95] transition-all p-3 flex justify-center items-center rounded-full h-[3.5rem] w-[3.5rem]`}
+                      >
                         <img src={x.icon} alt="" />
                       </div>
                     </Link>
@@ -34,7 +44,7 @@ function Footer() {
               <div className="flex flex-col space-y-3 mt-3">
                 {menu.map((x) => {
                   return (
-                    <Link href={x.href}>
+                    <Link key={x.label} href={x.href}>
                       <div className="hover:underline font-medium">
                         {t(x.label)}
                       </div>
@@ -51,7 +61,7 @@ function Footer() {
               <div className="flex flex-col space-y-3 mt-3">
                 {company.map((x) => {
                   return (
-                    <Link href={x.href}>
+                    <Link key={x.label} href={x.href}>
                       <div className="hover:underline font-medium">
                         {t(x.label)}
                       </div>
@@ -68,7 +78,7 @@ function Footer() {
               <div className="flex flex-col space-y-3 mt-3">
                 {security.map((x) => {
                   return (
-                    <Link href={x.href}>
+                    <Link key={x.label} href={x.href}>
                       <div className="hover:underline font-medium">
                         {t(x.label)}
                       </div>
@@ -89,7 +99,7 @@ function Footer() {
 
 const security = [
   {
-    label: "GetHelp",
+    label: "Get Help",
     href: "#GetHelp",
   },
   {

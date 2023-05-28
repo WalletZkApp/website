@@ -1,9 +1,5 @@
-"use client";
-
 import { NextIntlClientProvider } from "next-intl";
-import { notFound } from "next/navigation";
 import "../globals.css";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import ThemeHandler from "@/context/theme_context";
 
 export function generateStaticParams() {
@@ -20,16 +16,8 @@ export function generateStaticParams() {
 export default async function LocaleLayout({
   children,
   params: { locale },
-}: {
-  children: React.ReactNode;
-  params: Params;
-}) {
-  let messages;
-  try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
-  } catch (error) {
-    notFound();
-  }
+}: any) {
+  const messages = await import(`../../messages/${locale}.json`);
 
   return (
     <html lang={locale}>

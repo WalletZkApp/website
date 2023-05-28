@@ -1,5 +1,6 @@
 "use client";
 
+import Collection from "@/components/collection";
 import Features from "@/components/features";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
@@ -7,11 +8,9 @@ import Investors from "@/components/investors";
 import Navigation from "@/components/navigation";
 import Team from "@/components/team";
 import { ThemeContext } from "@/context/theme_context";
-import { useTranslations } from "next-intl";
 import { useContext } from "react";
 
 export default function Page() {
-  const t = useTranslations("Index");
   const { theme } = useContext(ThemeContext);
   return (
     <>
@@ -23,6 +22,7 @@ export default function Page() {
         <Navigation />
         <Hero />
         <Features />
+        <Collection />
         <Team />
         <Investors />
         <Footer />

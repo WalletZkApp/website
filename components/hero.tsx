@@ -1,11 +1,9 @@
-import { Button } from "@mui/material";
-import React from "react";
 import { useTranslations } from "use-intl";
 
 function Hero() {
   const t = useTranslations("Index");
   return (
-    <div id="Hero" className="py-12 lg:py-16">
+    <div id="Hero" className="py-5 md:py-12 lg:py-16">
       <div className="flex flex-col md:items-center md:flex-row max-w-7xl mx-auto p-5">
         <div className="w-full lg:w-[60%] text-center md:text-left">
           <div className="text-[2rem] lg:text-[3.5rem] font-semibold">
@@ -21,7 +19,7 @@ function Hero() {
           </div>
           <form className="flex flex-col md:flex-row md:items-center md:space-x-5 mt-8">
             <input
-              className="bg-white px-5 py-3 drop-shadow-lg w-full md:w-[20rem]"
+              className="bg-white px-5 py-3 drop-shadow-lg w-full md:w-[20rem] rounded-md"
               placeholder={t("Enter your email")}
               required
             />
@@ -29,9 +27,20 @@ function Hero() {
               {t("Join Waitlist")}
             </button>
           </form>
+          <div className="mt-10 md:hidden">
+            <img
+              className="drop-shadow-xl border"
+              src="/assets/mockup.png"
+              alt=""
+            />
+          </div>
         </div>
-        <div className="w-full lg:w-[40%] mt-12 md:mt-0">
-          <img src="/assets/illustration.png" alt="" />
+        <div className="hidden md:block w-full lg:w-[40%] mt-12 md:mt-0">
+          <img
+            className="h-[20rem] object-contain drop-shadow-xl"
+            src="/zkwallet.png"
+            alt=""
+          />
         </div>
       </div>
     </div>
