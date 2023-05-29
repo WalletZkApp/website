@@ -22,10 +22,10 @@ function Navigation() {
       <div className="hidden lg:flex items-center space-x-8">
         {menuList.map((x) => {
           return (
-            <div className="menu-parents">
+            <div key={x.label} className="menu-parents">
               {x.label === "Guardian Registration" ? (
                 <Link
-                  className="hover:text-primary cursor-pointer transition-all pb-1"
+                  className="hover:text-primary pb-1"
                   key={x.label}
                   href={x.href}
                 >
@@ -33,7 +33,11 @@ function Navigation() {
                   <div className="menu-child"></div>
                 </Link>
               ) : (
-                <a key={x.label} href={x.href}>
+                <a
+                  className="hover:text-primary pb-1"
+                  key={x.label}
+                  href={x.href}
+                >
                   {t(x.label)}
                   <div className="menu-child"></div>
                 </a>
@@ -41,7 +45,7 @@ function Navigation() {
             </div>
           );
         })}
-        <button className="hover:brightness-[1.1] transition-all button-gd text-white font-semibold p-2 px-3 rounded-md">
+        <button className="hover:brightness-[1.05] transition-all button-gd text-white font-semibold p-2 px-3 rounded-md">
           Connect Wallet
         </button>
       </div>
@@ -169,11 +173,11 @@ function Navigation() {
         </div>
         {menuList.map((x) => {
           return x.label === "Guardian Registration" ? (
-            <Link key={x.label} href={x.href}>
+            <Link onClick={() => setMenu(false)} key={x.label} href={x.href}>
               {t(x.label)}
             </Link>
           ) : (
-            <a key={x.label} href={x.href}>
+            <a onClick={() => setMenu(false)} key={x.label} href={x.href}>
               {t(x.label)}
             </a>
           );

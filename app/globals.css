@@ -36,12 +36,26 @@ th,td {
 .menu-child {
   width: 0%;
   height: 2px;
-  transition: all 0.10s;
+  transition: all 0.25s;
   background-color: #804BDB;
   border-radius: 5px;
 }
 
 .menu-parents:hover .menu-child {
   width: 100%;
-  transition: all 0.5s;
+}
+
+.floating-logo {
+  animation: float 4s infinite;
+}
+
+@keyframes float {
+
+  33% {
+    transform : translatey(5%)
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }

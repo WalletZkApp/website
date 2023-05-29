@@ -15,19 +15,27 @@ function Footer() {
       >
         <div className="max-w-7xl p-5 mx-auto">
           <div className="flex flex-col space-y-12 lg:flex-row lg:space-y-0 justify-between">
-            <div>
-              <img src="/logo.png" alt="" />
-              <div className="uppercase mt-5 text-gray-400 font-medium">
+            <div className="flex flex-col">
+              {theme === "light" ? (
+                <img className="h-[2.5rem] w-fit" src="/logo.png" alt="" />
+              ) : (
+                <img
+                  className="h-[2.5rem] w-fit"
+                  src="/logo_white.png"
+                  alt=""
+                />
+              )}
+              <div className="uppercase mt-10 text-gray-400 font-medium">
                 {t("Contact Us")}
               </div>
-              <div className="grid grid-cols-3 md:grid-cols-5 gap-5 mt-5">
+              <div className="flex flex-wrap items-center mt-5">
                 {socials.map((x) => {
                   return (
                     <Link href={x.href} key={x.href} target="_blank">
                       <div
                         className={`border ${
                           theme === "light" ? "" : "border-gray-700"
-                        } hover:translate-y-[5%] hover:brightness-[0.95] transition-all p-3 flex justify-center items-center rounded-full h-[3.5rem] w-[3.5rem]`}
+                        } hover:translate-y-[5%] hover:brightness-[0.95] transition-all p-3 flex justify-center items-center rounded-full h-[3.5rem] w-[3.5rem] mr-5 mb-5`}
                       >
                         <img src={x.icon} alt="" />
                       </div>
@@ -36,12 +44,12 @@ function Footer() {
                 })}
               </div>
               <div className="mt-5">{t("Languages")}</div>
-              <div className="flex items-center space-x-2 md:space-x-5 mt-5">
+              <div className="flex flex-wrap items-center mt-5">
                 {languages.map((x) => {
                   return (
                     <Link href={x.href} key={x.flag}>
                       <img
-                        className="h-[2rem] w-[3rem] rounded-md cursor-pointer hover:translate-y-[-5%] transition-all"
+                        className="h-[2rem] w-[3rem] rounded-md cursor-pointer hover:translate-y-[-5%] transition-all drop-shadow-md mr-5 mb-5"
                         src={x.flag}
                         alt=""
                       />
