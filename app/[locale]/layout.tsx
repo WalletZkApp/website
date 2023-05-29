@@ -41,7 +41,7 @@ export default async function LocaleLayout({
           name="description"
           content="With a ZK wallet, the transaction details are encrypted and the zero-knowledge proof ensures that the transaction is valid"
         />
-        <link rel="icon" href="/zkwallet.png" type="image/x-icon" />
+        <link rel="icon" href="icon.png" type="image/x-icon" />
       </head>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
