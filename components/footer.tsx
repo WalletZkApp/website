@@ -41,7 +41,7 @@ function Footer() {
                   return (
                     <Link href={x.href} key={x.flag}>
                       <img
-                        className="h-[2rem] rounded-md cursor-pointer hover:translate-y-[-5%] transition-all"
+                        className="h-[2rem] w-[3rem] rounded-md cursor-pointer hover:translate-y-[-5%] transition-all"
                         src={x.flag}
                         alt=""
                       />

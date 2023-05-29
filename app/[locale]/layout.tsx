@@ -1,10 +1,12 @@
-"use client";
-
-import { NextIntlClientProvider } from "next-intl";
-import "../globals.css";
-import ThemeHandler from "@/context/theme_context";
-import { ThemeProvider, createTheme } from "@mui/material";
 import React from "react";
+import "../globals.css";
+
+// Theme Context
+import ThemeHandler from "@/context/theme_context";
+
+// Multi Languages
+import { NextIntlClientProvider } from "next-intl";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 
 export function generateStaticParams() {
   return [
@@ -17,32 +19,26 @@ export function generateStaticParams() {
   ];
 }
 
+interface layout {
+  children: React.ReactNode;
+  params: Params;
+}
+
 export default async function LocaleLayout({
   children,
   params: { locale },
-}: any) {
-  const messages = await import(`../../messages/${locale}.json`);
-
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#804BDB",
-      },
-    },
-  });
+}: layout) {
+  const messages = Object.assign(
+    {},
+    await import(`../../messages/${locale}.json`)
+  );
 
   return (
     <html lang={locale}>
       <body>
-        <React.Suspense fallback={null}>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <ThemeProvider theme={theme}>
-              <ThemeHandler>
-                <div>{children}</div>
-              </ThemeHandler>
-            </ThemeProvider>
-          </NextIntlClientProvider>
-        </React.Suspense>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ThemeHandler>{children}</ThemeHandler>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

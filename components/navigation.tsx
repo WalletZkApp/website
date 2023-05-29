@@ -4,7 +4,7 @@ import { ThemeContext } from "@/context/theme_context";
 import { useContext, useEffect, useState } from "react";
 import { useTranslations } from "use-intl";
 
-import { Icon, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -16,6 +16,37 @@ function Navigation() {
   const { theme, changeTheme } = useContext(ThemeContext);
   const [menu, setMenu] = useState(false);
   const [floating, setFloating] = useState(false);
+
+  const MenuComponents = () => {
+    return (
+      <div className="hidden lg:flex items-center space-x-8">
+        {menuList.map((x) => {
+          return (
+            <div className="menu-parents">
+              {x.label === "Guardian Registration" ? (
+                <Link
+                  className="hover:text-primary cursor-pointer transition-all pb-1"
+                  key={x.label}
+                  href={x.href}
+                >
+                  {t(x.label)}
+                  <div className="menu-child"></div>
+                </Link>
+              ) : (
+                <a key={x.label} href={x.href}>
+                  {t(x.label)}
+                  <div className="menu-child"></div>
+                </a>
+              )}
+            </div>
+          );
+        })}
+        <button className="hover:brightness-[1.1] transition-all button-gd text-white font-semibold p-2 px-3 rounded-md">
+          Connect Wallet
+        </button>
+      </div>
+    );
+  };
 
   const handleScroll = () => {
     if (window.scrollY > 500) {
@@ -32,14 +63,67 @@ function Navigation() {
 
   return (
     <>
-      <div className="flex items-center justify-between p-5">
-        <img
-          className="cursor-pointer"
-          onClick={() => window.scrollTo(0, 0)}
-          src="/logo.png"
-          alt=""
-        />
-        <div className="flex items-center space-x-8">
+      {/* Normal Navigation  */}
+      <div
+        className={`flex items-center justify-between space-x-5 p-5 ${
+          theme === "light" ? "text-black" : "text-white"
+        } z-[99] relative`}
+      >
+        <Link href="/">
+          {theme === "light" ? (
+            <img className="h-[2rem] md:h-[2.5rem]" src="/logo.png" alt="" />
+          ) : (
+            <img
+              className="h-[2rem] md:h-[2.5rem]"
+              src="/logo_white.png"
+              alt=""
+            />
+          )}
+        </Link>
+        <div className="flex items-center space-x-1 lg:space-x-8">
+          <IconButton
+            onClick={() =>
+              theme === "light" ? changeTheme("dark") : changeTheme("light")
+            }
+          >
+            {theme === "light" ? (
+              <LightModeIcon />
+            ) : (
+              <DarkModeIcon sx={{ color: "white" }} />
+            )}
+          </IconButton>
+          <div className="lg:hidden">
+            <IconButton onClick={() => setMenu(!menu)}>
+              <MenuIcon
+                sx={{ color: `${theme === "light" ? "black" : "white"}` }}
+              />
+            </IconButton>
+          </div>
+          <MenuComponents />
+        </div>
+      </div>
+      {/* Normal Navigation End  */}
+
+      {/* Floating Navigation ( On Scroll )  */}
+      <div
+        className={`${
+          floating ? "translate-y-0" : "translate-y-[-100%]"
+        } transition-all left-0 top-0 fixed ${
+          theme === "light" ? "bg-white text-black" : "bg-background text-white"
+        } drop-shadow-md w-full flex items-center justify-between p-5 z-[99] space-x-5`}
+      >
+        <Link href="/">
+          {theme === "light" ? (
+            <img className="h-[2rem] md:h-[2.5rem]" src="/logo.png" alt="" />
+          ) : (
+            <img
+              className="h-[2rem] md:h-[2.5rem]"
+              src="/logo_white.png"
+              alt=""
+            />
+          )}
+        </Link>
+        <div className="flex items-center space-x-1 md:space-x-8">
           <IconButton
             onClick={() =>
               theme === "light" ? changeTheme("dark") : changeTheme("light")
@@ -58,26 +142,10 @@ function Navigation() {
               />
             </IconButton>
           </div>
-          <div className="hidden md:flex items-center space-x-8">
-            {menuList.map((x) => {
-              return (
-                <a
-                  className="hover:text-primary cursor-pointer transition-all"
-                  key={x.href}
-                  href={x.href}
-                >
-                  {t(x.label)}
-                </a>
-              );
-            })}
-            <Link href="/guardian">
-              <button className="button-gd text-white font-semibold p-2 px-3 rounded-md">
-                Connect Wallet
-              </button>
-            </Link>
-          </div>
+          <MenuComponents />
         </div>
       </div>
+      {/* Floating Navigation End  */}
 
       {/* Mobile Navigation  */}
       <div
@@ -86,7 +154,13 @@ function Navigation() {
         } transition-all fixed left-0 top-0 h-[100vh] drop-shadow-md p-5 z-[99] flex flex-col space-y-8`}
       >
         <div className="flex items-center space-x-5">
-          <img src="/logo.png" alt="" />
+          <Link href="/">
+            {theme === "light" ? (
+              <img className="h-[2.5rem" src="/logo.png" alt="" />
+            ) : (
+              <img className="h-[2.5rem" src="/logo_white.png" alt="" />
+            )}
+          </Link>
           <IconButton onClick={() => setMenu(false)}>
             <CloseIcon
               sx={{ color: `${theme === "light" ? "black" : "white"}` }}
@@ -94,12 +168,12 @@ function Navigation() {
           </IconButton>
         </div>
         {menuList.map((x) => {
-          return (
-            <a
-              key={x.href + x.label}
-              onClick={() => setMenu(false)}
-              href={x.href}
-            >
+          return x.label === "Guardian Registration" ? (
+            <Link key={x.label} href={x.href}>
+              {t(x.label)}
+            </Link>
+          ) : (
+            <a key={x.label} href={x.href}>
               {t(x.label)}
             </a>
           );
@@ -110,62 +184,7 @@ function Navigation() {
           </button>
         </Link>
       </div>
-
-      {/* Floating Navigation  */}
-      <div
-        className={`${
-          floating ? "translate-y-0" : "translate-y-[-100%]"
-        } transition-all left-0 top-0 fixed ${
-          theme === "light" ? "bg-white text-black" : "bg-background text-white"
-        } w-full flex items-center justify-between p-5 z-[99]`}
-      >
-        <img
-          className="cursor-pointer"
-          onClick={() => {
-            window.scrollTo(0, 0);
-          }}
-          src="/logo.png"
-          alt=""
-        />
-        <div className="flex items-center space-x-8">
-          <IconButton
-            onClick={() =>
-              theme === "light" ? changeTheme("dark") : changeTheme("light")
-            }
-          >
-            {theme === "light" ? (
-              <LightModeIcon />
-            ) : (
-              <DarkModeIcon sx={{ color: "white" }} />
-            )}
-          </IconButton>
-          <div className="md:hidden">
-            <IconButton onClick={() => setMenu(!menu)}>
-              <MenuIcon
-                sx={{ color: `${theme === "light" ? "black" : "white"}` }}
-              />
-            </IconButton>
-          </div>
-          <div className="hidden md:flex items-center space-x-8">
-            {menuList.map((x) => {
-              return (
-                <a
-                  className="hover:text-primary cursor-pointer transition-all"
-                  key={x.label}
-                  href={x.href}
-                >
-                  {t(x.label)}
-                </a>
-              );
-            })}
-            <Link href="/guardian">
-              <button className="button-gd text-white font-semibold p-2 px-3 rounded-md">
-                Connect Wallet
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      {/* Mobile Navigation End  */}
     </>
   );
 }
@@ -173,19 +192,23 @@ function Navigation() {
 const menuList = [
   {
     label: "Features",
-    href: "#features",
+    href: "/#features",
   },
   {
     label: "Timeline",
-    href: "#collection",
+    href: "/#collection",
   },
   {
     label: "Investor/Partners",
-    href: "#investors",
+    href: "/#investors",
   },
   {
     label: "Meet The Team",
-    href: "#team",
+    href: "/#team",
+  },
+  {
+    label: "Guardian Registration",
+    href: "/guardian",
   },
 ];
 

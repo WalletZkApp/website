@@ -18,16 +18,20 @@ export default function Page() {
       <div
         className={`${
           theme === "light" ? "text-black bg-white" : "text-white bg-[#10172a]"
-        } transition-all`}
+        } transition-all overflow-x-hidden relative`}
       >
-        <Navigation />
-        <Hero />
-        <Features />
-        <Collection />
-        <Team />
-        <Investors />
-        <Form />
-        <Footer />
+        <div className="hidden lg:block absolute left-[-25%] top-[-10%] w-[1000px] h-[1000px] circle-gd rounded-full z-[0]"></div>
+        <div className="hidden lg:block absolute right-[-57.5%] top-[-5%] w-[1300px] h-[1100px] circle-gd rounded-full z-[0]"></div>
+        <div className="relative z-[1]">
+          <Navigation />
+          <Hero />
+          <Features />
+          <Collection />
+          <Team />
+          <Investors />
+          <Form />
+          <Footer />
+        </div>
       </div>
     </>
   );

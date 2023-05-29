@@ -1,14 +1,17 @@
-import { Button, IconButton, TextField } from "@mui/material";
-import GithubIcon from "@mui/icons-material/GitHub";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import RightIcon from "@mui/icons-material/ChevronRight";
+// Context
 import { useContext } from "react";
 import { ThemeContext } from "@/context/theme_context";
 import { useTranslations } from "next-intl";
 
+// Mui
+import { Button, IconButton } from "@mui/material";
+import GithubIcon from "@mui/icons-material/GitHub";
+import TelegramIcon from "@mui/icons-material/Telegram";
+
 function Form() {
   const { theme } = useContext(ThemeContext);
   const t = useTranslations("Index");
+
   return (
     <div>
       <div className="max-w-7xl mx-auto p-5 py-12 lg:py-16">
@@ -53,7 +56,7 @@ function Form() {
           <Button
             type="submit"
             variant="contained"
-            className="bg-primary"
+            className="bg-primary hover:bg-primary"
             sx={{ paddingBlock: "10px" }}
           >
             {t("Subscribe")}

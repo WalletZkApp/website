@@ -7,32 +7,35 @@ function Features() {
   return (
     <div
       id="features"
-      className="max-w-7xl p-5 mx-auto py-12 lg:pt-16 lg:pb-24"
+      className="max-w-7xl p-5 mx-auto lg:pt-16 lg:pb-24 flex flex-col lg:flex-row lg:items-center"
     >
-      <div className="text-center text-gd font-semibold text-[1.5rem] md:text-[3rem]">
-        {t("Features")}
+      <div className="w-full md:hidden lg:block lg:w-[35%]">
+        <img className="lg:h-[40rem]" src="/assets/mockup.png" alt="" />
       </div>
-      <div className="text-center lg:max-w-[50%] mx-auto mt-3">
-        Lorem ipsum dolor sit amet consectetur. Quisque elit malesuada nullam
-        risus bibendum. Ipsum posuere a arcu facilisi ipsum velit ut.
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 lg:max-w-[70%] mx-auto">
-        {features.map((x) => {
-          return (
-            <div
-              key={x.label}
-              className="flex flex-col items-start md:flex-row md:space-x-3"
-            >
-              <img className="h-[2rem] object-contain" src={x.icon} alt="" />
-              <div className="mt-2 md:mt-0">
-                <div className="font-semibold text-[1.25rem]">{t(x.label)}</div>
-                <div className="text-gray-400 lg:max-w-[80%] mt-3">
-                  {t(x.description)}
+      <div className="w-full lg:w-[65%]">
+        <div className="text-center text-gd font-semibold text-[1.5rem] md:text-[3rem]">
+          {t("Features")}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-5 md:mt-16">
+          {features.map((x) => {
+            return (
+              <div
+                key={x.label}
+                className="flex flex-col items-start md:flex-row md:space-x-3"
+              >
+                <img className="h-[2rem] object-contain" src={x.icon} alt="" />
+                <div className="mt-2 md:mt-0">
+                  <div className="font-semibold text-[1.25rem]">
+                    {t(x.label)}
+                  </div>
+                  <div className="text-gray-400 lg:max-w-[80%] mt-3">
+                    {t(x.description)}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
