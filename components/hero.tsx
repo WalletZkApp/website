@@ -15,7 +15,7 @@ function Hero() {
             <div className="text-gd text-[2rem] lg:text-[3.5rem] font-semibold">
               {t("ZK WALLET !")}
             </div>
-            <div className="mt-5 md:max-w-[80%]">
+            <div className="mt-5 md:max-w-[80%] font-light">
               {t(
                 "With a ZK wallet, the transaction details are encrypted and the zero-knowledge proof ensures that the transaction is valid"
               )}
