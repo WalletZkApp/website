@@ -71,7 +71,7 @@ function Navigation() {
       <div
         className={`flex items-center justify-between space-x-5 p-5 ${
           theme === "light" ? "text-black" : "text-white"
-        } z-[99] relative`}
+        } z-[99] relative px-8`}
       >
         <Link href="/">
           {theme === "light" ? (
@@ -114,7 +114,7 @@ function Navigation() {
           floating ? "translate-y-0" : "translate-y-[-100%]"
         } transition-all left-0 top-0 fixed ${
           theme === "light" ? "bg-white text-black" : "bg-background text-white"
-        } drop-shadow-md w-full flex items-center justify-between p-5 z-[99] space-x-5`}
+        } drop-shadow-md w-full flex items-center justify-between p-5 z-[99] space-x-5 px-8`}
       >
         <Link href="/">
           {theme === "light" ? (
@@ -160,9 +160,9 @@ function Navigation() {
         <div className="flex items-center space-x-5">
           <Link href="/">
             {theme === "light" ? (
-              <img className="h-[2.5rem]" src="/logo.png" alt="" />
+              <img className="h-[2rem]" src="/logo.png" alt="" />
             ) : (
-              <img className="h-[2.5rem]" src="/logo_white.png" alt="" />
+              <img className="h-[2rem]" src="/logo_white.png" alt="" />
             )}
           </Link>
           <IconButton onClick={() => setMenu(false)}>
