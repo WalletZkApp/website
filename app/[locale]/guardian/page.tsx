@@ -12,7 +12,11 @@ function Page() {
   const t = useTranslations("Index");
   return (
     <>
-      <div className={`${theme === "light" ? "bg-white" : "bg-background"}`}>
+      <div
+        className={`${
+          theme === "light" ? "bg-white" : "bg-background"
+        } transition-all`}
+      >
         <Navigation />
         <div className="min-h-screen flex items-center justify-center text-center">
           <div className="flex flex-col max-w-7xl p-5 md:py-12 mx-auto w-full">
