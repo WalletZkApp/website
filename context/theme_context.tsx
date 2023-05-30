@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ThemeContext = createContext({
   theme: "light",
@@ -23,6 +23,13 @@ export default function ThemeHandler({
     theme: theme,
     changeTheme: changeTheme,
   };
+
+  useEffect(() => {
+    let localTheme = localStorage.getItem("theme");
+    if (localTheme === "light" || localTheme === "dark") {
+      setTheme(localTheme);
+    }
+  }, []);
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
