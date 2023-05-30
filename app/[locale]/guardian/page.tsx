@@ -105,14 +105,12 @@ function Page() {
                 id="website"
                 placeholder="Website https://"
               />
-              <Button
+              <button
                 type="submit"
-                variant="contained"
-                className="bg-primary hover:bg-primary"
-                sx={{ paddingBlock: "10px", color: "white" }}
+                className="py-4 bg-primary hover:brightness-[1.1] text-white rounded-md"
               >
                 Register
-              </Button>
+              </button>
             </form>
           </div>
         </div>

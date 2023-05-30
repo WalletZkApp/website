@@ -53,14 +53,12 @@ function Form() {
             placeholder="Email"
             type="email"
           />
-          <Button
+          <button
             type="submit"
-            variant="contained"
-            className="bg-primary hover:bg-primary"
-            sx={{ paddingBlock: "10px" }}
+            className="bg-primary hover:brightness-[1.1] py-4 text-white rounded-md"
           >
-            {t("Subscribe")}
-          </Button>
+            Subscribe
+          </button>
         </form>
       </div>
     </div>

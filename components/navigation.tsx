@@ -160,9 +160,9 @@ function Navigation() {
         <div className="flex items-center space-x-5">
           <Link href="/">
             {theme === "light" ? (
-              <img className="h-[2.5rem" src="/logo.png" alt="" />
+              <img className="h-[2.5rem]" src="/logo.png" alt="" />
             ) : (
-              <img className="h-[2.5rem" src="/logo_white.png" alt="" />
+              <img className="h-[2.5rem]" src="/logo_white.png" alt="" />
             )}
           </Link>
           <IconButton onClick={() => setMenu(false)}>
