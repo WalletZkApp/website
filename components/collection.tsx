@@ -82,7 +82,7 @@ function Collection() {
                           <div className="w-[20px]">{index + 1}</div>
                           <div className="flex items-center space-x-3">
                             <img
-                              className="h-[2.5rem] w-[2.5rem] rounded-md"
+                              className="h-[2.5rem] w-[2.5rem] object-contain rounded-md"
                               src={x.avatar}
                               alt=""
                             />
