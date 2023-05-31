@@ -14,7 +14,7 @@ function Collection() {
       tab: "Collection",
     },
     {
-      label: "BRC-20",
+      label: "MR20",
       tab: "Ticker",
     },
   ];
@@ -173,7 +173,7 @@ function Collection() {
                             <div className="w-[20px]">{index + 1}</div>
                             <div className="flex items-center space-x-3">
                               <img
-                                className="h-[2.5rem] w-[2.5rem] rounded-md"
+                                className="h-[2.5rem] w-[2.5rem] rounded-md object-contain"
                                 src={x.avatar}
                                 alt=""
                               />
