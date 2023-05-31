@@ -212,7 +212,7 @@ const menuList = [
   },
   {
     label: "Guardian Registration",
-    href: "/guardian",
+    href: "/guardian-registration",
   },
 ];
 

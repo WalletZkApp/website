@@ -17,10 +17,10 @@ function Footer() {
           <div className="flex flex-col space-y-12 lg:flex-row lg:space-y-0 justify-between">
             <div className="flex flex-col">
               {theme === "light" ? (
-                <img className="h-[2.5rem] w-fit" src="/logo.png" alt="" />
+                <img className="h-[2.5rem] w-[15rem]" src="/logo.png" alt="" />
               ) : (
                 <img
-                  className="h-[2.5rem] w-fit"
+                  className="h-[2.5rem] w-[15rem]"
                   src="/logo_white.png"
                   alt=""
                 />
@@ -39,20 +39,6 @@ function Footer() {
                       >
                         <img src={x.icon} alt="" />
                       </div>
-                    </Link>
-                  );
-                })}
-              </div>
-              <div className="mt-5">{t("Languages")}</div>
-              <div className="flex flex-wrap items-center mt-5">
-                {languages.map((x) => {
-                  return (
-                    <Link href={x.href} key={x.flag}>
-                      <img
-                        className="h-[2rem] w-[3rem] rounded-md cursor-pointer hover:translate-y-[-5%] transition-all drop-shadow-md mr-5 mb-5"
-                        src={x.flag}
-                        alt=""
-                      />
                     </Link>
                   );
                 })}
@@ -108,6 +94,22 @@ function Footer() {
                   );
                 })}
               </div>
+              <div className="text-gray-400 font-medium mt-5">
+                {t("Languages")}
+              </div>
+              <div className="flex flex-wrap items-center lg:grid lg:grid-cols-3 mt-5">
+                {languages.map((x) => {
+                  return (
+                    <Link href={x.href} key={x.flag}>
+                      <img
+                        className="h-[2rem] w-[3rem] rounded-md cursor-pointer hover:translate-y-[-5%] transition-all drop-shadow-md mr-5 mb-5"
+                        src={x.flag}
+                        alt=""
+                      />
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -121,7 +123,7 @@ function Footer() {
 
 const languages = [
   {
-    flag: "/assets/flags/us.png",
+    flag: "/assets/flags/english.png",
     href: "/en",
   },
   {
@@ -190,12 +192,8 @@ const menu = [
     href: "#CommunityCoverage",
   },
   {
-    label: "Agent Shop",
-    href: "#Agent Shop",
-  },
-  {
-    label: "StarkNet Dapps",
-    href: "#StarkNet Dapps",
+    label: "MINA Protocol Zkapp",
+    href: "#Mina",
   },
 ];
 

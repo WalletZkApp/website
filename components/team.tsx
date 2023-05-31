@@ -20,13 +20,23 @@ function Team() {
             {team.map((x) => {
               return (
                 <div
+                  onClick={() => window.open(x.href)}
                   key={x.label}
                   className={`p-12 py-24 flex flex-col items-center ${
                     theme === "light" ? "bg-white" : "bg-gray-800"
                   } drop-shadow-lg rounded-lg hover:translate-y-[-5%] transition-all cursor-pointer`}
                 >
-                  <img src={x.image} alt="" />
-                  <div className="mt-8 text-[1.5rem]">{x.label}</div>
+                  <img
+                    className="h-[10rem] rounded-full"
+                    src={x.image}
+                    alt=""
+                  />
+                  <div className="mt-10 font-medium text-[1.25rem]">
+                    {x.label}
+                  </div>
+                  <div className="mt-5 text-gray-400 text-[1.1rem]">
+                    {x.job}
+                  </div>
                 </div>
               );
             })}
@@ -37,18 +47,31 @@ function Team() {
   );
 }
 
-const team = [
+interface member {
+  image: string;
+  label: string;
+  job: string;
+  href: string;
+}
+
+const team: member[] = [
   {
     image: "/assets/team/team_1.png",
-    label: "I'm Dev",
+    label: "IaM [ZK] <DEV>",
+    job: "Founder / CEO",
+    href: "https://twitter.com/IamZKdevETH",
   },
   {
     image: "/assets/team/team_2.png",
-    label: "Axel",
+    label: "Axel Arifin",
+    job: "Co-Founder / CMO",
+    href: "https://www.linkedin.com/in/axel-arifin-99aba7143/",
   },
   {
     image: "/assets/team/team_3.png",
-    label: "Abhi",
+    label: "Abishek Sira Chandrashekar",
+    job: "Co-Founder / Mobile Developer",
+    href: "https://www.linkedin.com/in/abhishek-sira-chandrashekar-821244b7/",
   },
 ];
 

@@ -1,127 +1,254 @@
 import { ThemeContext } from "@/context/theme_context";
-import { Button } from "@mui/material";
 import { useTranslations } from "next-intl";
 import { useContext, useState } from "react";
 
 function Collection() {
   const t = useTranslations("Index");
-  const [currentLength, setCurrentLength] = useState(10);
+  const [tickerLength, setTickerLength] = useState(10);
   const { theme } = useContext(ThemeContext);
+  const [menu, setMenu] = useState("Collection");
+
+  const menus = [
+    {
+      label: "NFT",
+      tab: "Collection",
+    },
+    {
+      label: "BRC-20",
+      tab: "Ticker",
+    },
+  ];
+
   return (
     <div id="collection" className="relative">
       <div
-        className={`${
-          currentLength === 10 ? "top-[-15%]" : "top-[-10%]"
-        } hidden lg:block absolute rounded-full left-[-40%] h-[1250px] w-[1250px] circle-gd`}
+        className={`top-[-200px] hidden lg:block absolute rounded-full left-[-40%] h-[1250px] w-[1250px] circle-gd`}
       ></div>
       <div className="max-w-7xl mx-auto p-5 py-12 lg:py-16">
-        <div className="text-[1.5rem] md:text-[2rem] font-semibold">MR20</div>
-        <div className="w-full overflow-x-auto mt-5">
-          <table className="w-full">
-            <thead>
-              <tr className="uppercase text-right text-gray-400 font-medium">
-                <th className="text-left">{t("Collection")}</th>
-                <th>{t("Floor Price")}</th>
-                <th>{t("Floor Change")}</th>
-                <th>{t("Volume")}</th>
-                <th>{t("Volume Change")}</th>
-                <th>{t("Items")}</th>
-                <th>{t("Owners")}</th>
-              </tr>
-            </thead>
-            <tbody
-              className={`${
-                theme === "light" ? "bg-white border" : "bg-background"
-              } drop-shadow-md `}
-            >
-              {collections.slice(0, currentLength).map((x, index) => {
-                return (
-                  <tr
-                    key={index}
-                    className={`text-right cursor-pointer ${
-                      theme === "light"
-                        ? "hover:bg-gray-100"
-                        : "hover:bg-gray-700"
-                    } transition-all`}
-                  >
-                    <td className="text-left">
-                      <div className="flex items-center space-x-8">
-                        <div className="w-[20px]">{index + 1}</div>
-                        <div className="flex items-center space-x-3">
-                          <img
-                            className="h-[2.5rem] w-[2.5rem] rounded-md"
-                            src={x.avatar}
-                            alt=""
-                          />
-                          <div className="whitespace-nowrap font-semibold">
-                            {x.label}
+        <div className="flex flex-col md:flex-row md:items-center md:space-x-10">
+          <div className="text-[1.5rem] md:text-[2rem] font-semibold">MR20</div>
+          <div
+            className={`flex items-center border rounded-full overflow-hidden ${
+              theme === "light" ? "" : "border-gray-700"
+            } mt-5 md:mt-0 w-fit`}
+          >
+            {menus.map((x) => {
+              return (
+                <div
+                  key={x.tab}
+                  onClick={() => setMenu(x.tab)}
+                  className={`px-10 py-2 ${
+                    menu === x.tab ? "bg-primary rounded-full text-white" : ""
+                  } transition-all cursor-pointer text-center`}
+                >
+                  {x.label}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {menu === "Collection" ? (
+          <div className="w-full overflow-x-auto mt-5">
+            <table className="w-full">
+              <thead>
+                <tr className="uppercase text-right text-gray-400 font-medium">
+                  <th className="text-left w-[400px]">Collection</th>
+                  <th>{t("Floor Price")}</th>
+                  <th>{t("Floor Change")}</th>
+                  <th>{t("Volume")}</th>
+                  <th>{t("Volume Change")}</th>
+                  <th>{t("Items")}</th>
+                  <th>{t("Owners")}</th>
+                </tr>
+              </thead>
+              <tbody
+                className={`${
+                  theme === "light" ? "bg-white border" : "bg-background"
+                } drop-shadow-md `}
+              >
+                {nft.slice(0, tickerLength).map((x, index) => {
+                  return (
+                    <tr
+                      key={x.label}
+                      className={`text-right cursor-pointer ${
+                        theme === "light"
+                          ? "hover:bg-gray-100"
+                          : "hover:bg-gray-700"
+                      } transition-all`}
+                    >
+                      <td className="text-left">
+                        <div className="flex items-center space-x-8">
+                          <div className="w-[20px]">{index + 1}</div>
+                          <div className="flex items-center space-x-3">
+                            <img
+                              className="h-[2.5rem] w-[2.5rem] rounded-md"
+                              src={x.avatar}
+                              alt=""
+                            />
+                            <div className="whitespace-nowrap font-semibold">
+                              {x.label}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td>
-                      <span className="font-semibold">{x.floorPrice}</span>{" "}
-                      <span className="font-light">ETH</span>
-                    </td>
-                    <td>
-                      <div>
-                        <span
-                          className={`${
-                            x.floorChange >= 0
-                              ? "text-green-500"
-                              : "text-red-500"
-                          }`}
-                        >
-                          {x.floorChange >= 0 ? "+" : ""}
-                          {x.floorChange}%
-                        </span>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="whitespace-nowrap">
-                        <span className="font-semibold">{x.volume}</span>{" "}
+                      </td>
+                      <td>
+                        <span className="font-semibold">{x.floorPrice}</span>{" "}
                         <span className="font-light">ETH</span>
-                      </div>
-                    </td>
-                    <td>
-                      <div>
-                        <span
-                          className={`${
-                            x.volumeChange >= 0
-                              ? "text-green-500"
-                              : "text-red-500"
-                          }`}
-                        >
-                          {x.volumeChange >= 0 ? "+" : ""}
-                          {x.volumeChange}%
-                        </span>
-                      </div>
-                    </td>
-                    <td className="font-semibold">{x.items}K</td>
-                    <td className="font-semibold">{x.owners}K</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        {currentLength === 10 ? (
-          <div
-            onClick={() => setCurrentLength(collections.length)}
-            className={`${
-              theme === "light" ? "bg-gray-100" : "bg-gray-700"
-            } mt-8 p-5 rounded-md cursor-pointer hover:brightness-[0.99]`}
-          >
-            <div
-              className={`w-full font-semibold text-center ${
-                theme === "light" ? "text-gd" : "text-white"
-              }`}
-            >
-              {t("View All Collections")}
-            </div>
+                      </td>
+                      <td>
+                        <div>
+                          <span
+                            className={`${
+                              x.floorChange >= 0
+                                ? "text-green-500"
+                                : "text-red-500"
+                            }`}
+                          >
+                            {x.floorChange >= 0 ? "+" : ""}
+                            {x.floorChange}%
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <div className="whitespace-nowrap">
+                          <span className="font-semibold">{x.volume}</span>{" "}
+                          <span className="font-light">ETH</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <span
+                            className={`${
+                              x.volumeChange >= 0
+                                ? "text-green-500"
+                                : "text-red-500"
+                            }`}
+                          >
+                            {x.volumeChange >= 0 ? "+" : ""}
+                            {x.volumeChange}%
+                          </span>
+                        </div>
+                      </td>
+                      <td className="font-semibold">{x.items}K</td>
+                      <td className="font-semibold">{x.owners}K</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         ) : (
-          ""
+          <>
+            <div className="w-full overflow-x-auto mt-5">
+              <table className="w-full">
+                <thead>
+                  <tr className="uppercase text-right text-gray-400 font-medium">
+                    <th className="text-left w-[400px]">Ticker</th>
+                    <th>{t("Floor Price")}</th>
+                    <th>{t("Floor Change")}</th>
+                    <th>{t("Volume")}</th>
+                    <th>{t("Volume Change")}</th>
+                    <th>{t("Items")}</th>
+                    <th>{t("Owners")}</th>
+                  </tr>
+                </thead>
+                <tbody
+                  className={`${
+                    theme === "light" ? "bg-white border" : "bg-background"
+                  } drop-shadow-md `}
+                >
+                  {collections.slice(0, tickerLength).map((x, index) => {
+                    return (
+                      <tr
+                        key={x.label}
+                        className={`text-right cursor-pointer ${
+                          theme === "light"
+                            ? "hover:bg-gray-100"
+                            : "hover:bg-gray-700"
+                        } transition-all`}
+                      >
+                        <td className="text-left">
+                          <div className="flex items-center space-x-8">
+                            <div className="w-[20px]">{index + 1}</div>
+                            <div className="flex items-center space-x-3">
+                              <img
+                                className="h-[2.5rem] w-[2.5rem] rounded-md"
+                                src={x.avatar}
+                                alt=""
+                              />
+                              <div className="whitespace-nowrap font-semibold">
+                                {x.label}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <span className="font-semibold">{x.floorPrice}</span>{" "}
+                          <span className="font-light">ETH</span>
+                        </td>
+                        <td>
+                          <div>
+                            <span
+                              className={`${
+                                x.floorChange >= 0
+                                  ? "text-green-500"
+                                  : "text-red-500"
+                              }`}
+                            >
+                              {x.floorChange >= 0 ? "+" : ""}
+                              {x.floorChange}%
+                            </span>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="whitespace-nowrap">
+                            <span className="font-semibold">{x.volume}</span>{" "}
+                            <span className="font-light">ETH</span>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <span
+                              className={`${
+                                x.volumeChange >= 0
+                                  ? "text-green-500"
+                                  : "text-red-500"
+                              }`}
+                            >
+                              {x.volumeChange >= 0 ? "+" : ""}
+                              {x.volumeChange}%
+                            </span>
+                          </div>
+                        </td>
+                        <td className="font-semibold">{x.items}K</td>
+                        <td className="font-semibold">{x.owners}K</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {tickerLength === 10 ? (
+              <div
+                onClick={() => setTickerLength(collections.length)}
+                className={`${
+                  theme === "light" ? "bg-gray-100" : "bg-gray-700"
+                } mt-8 p-5 rounded-md cursor-pointer hover:brightness-[0.9]`}
+              >
+                <div
+                  className={`w-full font-semibold text-center ${
+                    theme === "light" ? "text-gd" : "text-white"
+                  }`}
+                >
+                  {t("View All Tickers")}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+          </>
         )}
       </div>
     </div>
@@ -140,6 +267,16 @@ interface collection {
 }
 
 const collections: collection[] = [
+  {
+    avatar: "/assets/avatars/avatar_11.png",
+    label: "ZKWALLET",
+    floorPrice: 3.34,
+    floorChange: -2.3,
+    volume: 5.089,
+    volumeChange: 1.1,
+    items: 19.5,
+    owners: 10,
+  },
   {
     avatar: "/assets/avatars/avatar_1.png",
     label: "Bored Age Yacht Club",
@@ -241,16 +378,6 @@ const collections: collection[] = [
     owners: 10,
   },
   {
-    avatar: "/assets/avatars/avatar_11.png",
-    label: "ZKWALLET",
-    floorPrice: 3.34,
-    floorChange: -2.3,
-    volume: 5.089,
-    volumeChange: 1.1,
-    items: 19.5,
-    owners: 10,
-  },
-  {
     avatar: "/assets/avatars/avatar_12.png",
     label: "SZBIT",
     floorPrice: 3.34,
@@ -300,6 +427,9 @@ const collections: collection[] = [
     items: 19.5,
     owners: 10,
   },
+];
+
+const nft = [
   {
     avatar: "/assets/avatars/avatar_17.png",
     label: "Sub 100k",

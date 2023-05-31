@@ -8,16 +8,20 @@ function Features() {
   return (
     <div
       id="features"
-      className="max-w-7xl p-5 mx-auto lg:pt-16 lg:pb-24 flex flex-col lg:flex-row lg:items-center"
+      className="max-w-7xl p-5 mx-auto lg:py-24 flex flex-col lg:flex-row lg:items-center"
     >
       <div className="w-full md:hidden lg:block lg:w-[35%]">
         <FadeWrapper x={-100} y={0}>
-          <img className="lg:h-[40rem]" src="/assets/mockup.png" alt="" />
+          <img
+            className="rounded-md lg:h-[40rem] hover:translate-y-[-5%] transition-all cursor-pointer drop-shadow-md"
+            src="/assets/mockup.jpg"
+            alt=""
+          />
         </FadeWrapper>
       </div>
       <div className="w-full lg:w-[65%]">
         <FadeWrapper x={100} y={0}>
-          <div className="text-center text-gd font-semibold text-[1.5rem] md:text-[3rem]">
+          <div className="text-center text-gd font-semibold text-[1.5rem] md:text-[3rem] mt-5 md:mt-0">
             {t("Features")}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-5 md:mt-16">

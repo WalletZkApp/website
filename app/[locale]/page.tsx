@@ -1,6 +1,7 @@
 "use client";
 
 import Collection from "@/components/collection";
+import CookiesConsent from "@/components/cookies_consent";
 import Features from "@/components/features";
 import Footer from "@/components/footer";
 import Form from "@/components/form";
@@ -30,6 +31,7 @@ export default function Page() {
           <Form />
           <Footer />
         </div>
+        <CookiesConsent />
       </div>
     </>
   );

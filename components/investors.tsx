@@ -17,17 +17,18 @@ function Investors() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-12 lg:gap-24 mt-12 lg:mt-24">
           {investors.map((x) => {
             return (
-              <div
-                key={x}
+              <a
+                href={x.href}
+                target="_blank"
+                key={x.href}
                 className="hover:translate-y-[-5%] cursor-pointer transition-all flex justify-center items-center"
               >
                 <img
                   className="h-[7.5rem] object-contain"
-                  key={x}
-                  src={x}
+                  src={x.image}
                   alt=""
                 />
-              </div>
+              </a>
             );
           })}
         </div>
@@ -37,16 +38,46 @@ function Investors() {
 }
 
 const investors = [
-  "/assets/investors/investor_1.png",
-  "/assets/investors/investor_2.png",
-  "/assets/investors/investor_3.png",
-  "/assets/partners/partner_1.png",
-  "/assets/partners/partner_2.png",
-  "/assets/partners/partner_3.png",
-  "/assets/partners/partner_4.png",
-  "/assets/partners/partner_5.png",
-  "/assets/partners/partner_6.png",
-  "/assets/partners/partner_7.png",
+  {
+    image: "/assets/partners/partner_4.png",
+    href: "https://minaprotocol.com/",
+  },
+  {
+    image: "/assets/investors/investor_1.png",
+    href: "https://twitter.com/ZkPixHuman",
+  },
+  {
+    image: "/assets/investors/investor_2.png",
+    href: "https://twitter.com/minacryptocom",
+  },
+  {
+    image: "/assets/investors/investor_3.png",
+    href: "https://twitter.com/minadevelopers?lang=en",
+  },
+  {
+    image: "/assets/partners/partner_1.png",
+    href: "https://zkappsformina.com/",
+  },
+  {
+    image: "/assets/partners/partner_2.png",
+    href: "https://o1labs.org/",
+  },
+  {
+    image: "/assets/partners/partner_3.png",
+    href: "https://zkfs.io/",
+  },
+  {
+    image: "/assets/partners/partner_5.png",
+    href: "https://luminadex.com/",
+  },
+  {
+    image: "/assets/partners/partner_6.png",
+    href: "https://moonedge.finance/#/",
+  },
+  {
+    image: "/assets/partners/partner_7.png",
+    href: "https://everstake.one/",
+  },
 ];
 
 export default Investors;

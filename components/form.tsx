@@ -1,16 +1,18 @@
 // Context
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "@/context/theme_context";
 import { useTranslations } from "next-intl";
 
 // Mui
-import { Button, IconButton } from "@mui/material";
+import { Button, Checkbox, IconButton } from "@mui/material";
 import GithubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
 
 function Form() {
   const { theme } = useContext(ThemeContext);
   const t = useTranslations("Index");
+
+  const [agree, setAgree] = useState(false);
 
   return (
     <div>
@@ -53,6 +55,17 @@ function Form() {
             placeholder="Email"
             type="email"
           />
+
+          <div className="flex space-x-3 px-1">
+            <div>
+              <input onClick={() => setAgree(!agree)} type="checkbox"></input>
+            </div>
+            <div>
+              {t(
+                "I agree to receive e-mails from your company and your terms and conditions"
+              )}
+            </div>
+          </div>
           <button
             type="submit"
             className="bg-primary hover:brightness-[1.1] py-4 text-white rounded-md"

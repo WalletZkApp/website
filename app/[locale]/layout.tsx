@@ -1,6 +1,5 @@
 import React from "react";
 import "../globals.css";
-
 // Theme Context
 import ThemeHandler from "@/context/theme_context";
 
@@ -41,8 +40,8 @@ export default async function LocaleLayout({
           name="description"
           content="With a ZK wallet, the transaction details are encrypted and the zero-knowledge proof ensures that the transaction is valid"
         />
-        <link rel="icon" href="icon.png" type="image/x-icon" />
       </head>
+      <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeHandler>{children}</ThemeHandler>
