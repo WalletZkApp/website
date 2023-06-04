@@ -1,16 +1,24 @@
 "use client";
 
-import Collection from "@/components/collection";
-import CookiesConsent from "@/components/cookies_consent";
-import Features from "@/components/features";
-import Footer from "@/components/footer";
-import Form from "@/components/form";
-import Hero from "@/components/hero";
-import Investors from "@/components/investors";
-import Navigation from "@/components/navigation";
-import Team from "@/components/team";
+// Cookies Popup
+import CookiesConsent from "@/components/popup/cookies_consent";
+
+// Sections
+import Collection from "@/components/home/collection";
+import Features from "@/components/home/features";
+import Footer from "@/components/layout/footer";
+import Form from "@/components/home/form";
+import Hero from "@/components/home/hero";
+import Investors from "@/components/home/investors";
+import Navigation from "@/components/layout/navigation";
+import Team from "@/components/home/team";
+
+// Context
 import { ThemeContext } from "@/context/theme_context";
 import { useContext } from "react";
+import OurSolution from "@/components/home/our_solution";
+import KeylessWallet from "@/components/home/keyless_wallet";
+import SocialRecovery from "@/components/home/social_recovery";
 
 export default function Page() {
   const { theme } = useContext(ThemeContext);
@@ -25,6 +33,9 @@ export default function Page() {
           <Navigation />
           <Hero />
           <Features />
+          <OurSolution />
+          <KeylessWallet />
+          <SocialRecovery />
           <Collection />
           <Team />
           <Investors />

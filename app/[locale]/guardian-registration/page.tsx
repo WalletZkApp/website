@@ -1,10 +1,16 @@
 "use client";
 
-import Navigation from "@/components/navigation";
-import { ThemeContext } from "@/context/theme_context";
+import Navigation from "@/components/layout/navigation";
+
+// Mui
 import WalletIcon from "@mui/icons-material/Wallet";
-import { Button, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
+
+// Translation
 import { useTranslations } from "next-intl";
+
+// Context
+import { ThemeContext } from "@/context/theme_context";
 import { useContext } from "react";
 
 function Page() {

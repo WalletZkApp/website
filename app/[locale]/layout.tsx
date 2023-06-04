@@ -1,5 +1,5 @@
-import React from "react";
 import "../globals.css";
+
 // Theme Context
 import ThemeHandler from "@/context/theme_context";
 

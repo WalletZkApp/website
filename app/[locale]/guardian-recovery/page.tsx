@@ -1,16 +1,18 @@
 "use client";
 
-import { ThemeContext } from "@/context/theme_context";
 import { ChangeEvent, useContext, useState } from "react";
+
+// Context
+import { ThemeContext } from "@/context/theme_context";
+
+// Router Params
 import { useSearchParams } from "next/navigation";
 
 function Page() {
   // Smart Contract Parameter
   const searchParams = useSearchParams();
-
-  //   Value User Wallet Address
+  // Value User Wallet Address
   const smartcontract = searchParams.get("smartcontract");
-
   // Theme Mode
   const { theme } = useContext(ThemeContext);
 

@@ -4,13 +4,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "SF Pro";
+  src: url(../fonts/SF-Pro.ttf);
+}
+
 html { 
   scroll-behavior: smooth;
-  font-family: 'Rubik', sans-serif;
+  font-family: "SF Pro",sans-serif
 }
 
 .text-gd {
-  background: linear-gradient(94.59deg, #AC78E3 7.54%, #804BDB 36.55%);
+  background: linear-gradient(to right, #451990 0%, #bd98f9 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-semi-gd {
+  background: linear-gradient(79.28deg, #5B209A -2.57%, #9A63F9 92.04%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-light-gd {
+  background: linear-gradient(93.04deg, #671FB4 3.33%, #955EF4 82.31%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -21,7 +40,15 @@ html {
 }
 
 .background-gd {
-  background : linear-gradient(147.31deg, rgba(141, 141, 236, 0.167177) 45.74%, rgba(84, 84, 212, 0.0001) 86.05%)
+  background : linear-gradient(to top, rgba(141, 141, 236, 0.167177) 45.74%, rgba(84, 84, 212, 0.0001) 86.05%)
+}
+
+.line-gd {
+  background: linear-gradient(to right, #8A56DE 64.39%, #F3C44A 103.05%);
+}
+
+.carousel-gd {
+  background: linear-gradient(121.96deg, #8A56DE 64.39%, #F3C44A 103.05%);
 }
  
 th,td {
@@ -37,7 +64,7 @@ th,td {
   width: 0%;
   height: 2px;
   transition: all 0.25s;
-  background-color: #804BDB;
+  background-color: #5B5B5B;
   border-radius: 5px;
 }
 
@@ -48,8 +75,6 @@ th,td {
 .floating-logo {
   animation: float 4s infinite;
 }
-
-
 
 @keyframes float {
 
