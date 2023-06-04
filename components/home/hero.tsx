@@ -17,7 +17,7 @@ function Hero() {
             <div
               className={`${
                 theme === "light" ? "text-darkgrey" : "text-white"
-              } text-[2rem] lg:text-[3rem] font-thin tracking-wider`}
+              } text-[2rem] lg:text-[3rem] tracking-wider`}
             >
               {t("Welcome to")}
             </div>

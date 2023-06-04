@@ -24,7 +24,7 @@ function Features() {
       </div>
       <div className="w-full lg:w-[60%]">
         <FadeWrapper x={100} y={0}>
-          <div className="text-center text-gd font-thin tracking-widest text-[1.5rem] md:text-[3rem] mt-5 md:mt-0">
+          <div className="text-center text-gd tracking-widest text-[1.5rem] md:text-[3rem] mt-5 md:mt-0">
             {t("Features")}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-5 md:mt-16">

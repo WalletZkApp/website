@@ -41,7 +41,7 @@ export default function SocialRecoveryCarousel() {
             <SwiperSlide>
               <div className="p-8 bg-white rounded-lg flex flex-col items-start space-y-8">
                 <img className="object-contain h-[2rem]" src={x.logo} alt="" />
-                <div className="md:text-[1.25rem] text-darkgrey font-light h-[9rem]">
+                <div className="md:text-[1.25rem] text-darkgrey h-[9rem]">
                   {x.label}
                 </div>
                 <div className="flex space-x-3">

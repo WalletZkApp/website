@@ -9,7 +9,7 @@ function OurSolution() {
   return (
     <div className="max-w-5xl mx-auto p-5 mt-5 md:mt-12">
       <div className="text-center">
-        <div className="text-primary font-thin md:text-[1.25rem]">
+        <div className="text-primary md:text-[1.25rem]">
           {t("Our Solutions")}
         </div>
         <div className="font-medium text-[2rem]">
@@ -27,7 +27,7 @@ function OurSolution() {
               {t("Staking on Everstake")}
             </div>
             <div
-              className={`font-thin lg:max-w-[90%] md:text-[1.25rem] ${
+              className={`lg:max-w-[90%] md:text-[1.25rem] ${
                 theme === "light" ? "text-darkgrey" : "text-white"
               }`}
             >
@@ -63,7 +63,7 @@ function OurSolution() {
                 {t("Buy crypto on Mina Protocol")}
               </div>
               <div
-                className={`font-thin md:text-[1.25rem] ${
+                className={`md:text-[1.25rem] ${
                   theme === "light" ? "text-darkgrey" : "text-white"
                 }`}
               >

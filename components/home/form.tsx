@@ -36,7 +36,7 @@ function Form() {
           </IconButton>
         </div>
         <form className="flex flex-col space-y-6 mt-10">
-          <div className="text-[1.5rem] md:text-[2.5rem] text-center text-light-gd font-extralight tracking-widest">
+          <div className="text-[1.5rem] md:text-[2.5rem] text-center text-light-gd tracking-widest">
             {t("Subscribe to Our Newsletter")}
           </div>
           <input

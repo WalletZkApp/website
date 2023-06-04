@@ -10,7 +10,7 @@ function Investors() {
       id="investors"
       className="max-w-7xl mx-auto p-5 flex flex-col items-center py-12 lg:py-16"
     >
-      <div className="text-[1.5rem] md:text-[2.5rem] tracking-widest font-extralight text-light-gd">
+      <div className="text-[1.5rem] md:text-[2.5rem] tracking-widest text-light-gd">
         {t("Investor / Partners")}
       </div>
       <FadeWrapper y={100} x={0}>

@@ -55,7 +55,7 @@ function Footer() {
                   return (
                     <Link key={x.label} href={x.href}>
                       <div
-                        className={`hover:underline font-medium font-thin ${
+                        className={`hover:underline font-medium ${
                           theme === "light" ? "text-darkgrey" : "text-white"
                         }`}
                       >
@@ -76,7 +76,7 @@ function Footer() {
                   return (
                     <Link key={x.label} href={x.href}>
                       <div
-                        className={`hover:underline font-medium font-thin ${
+                        className={`hover:underline font-medium ${
                           theme === "light" ? "text-darkgrey" : "text-white"
                         }`}
                       >
@@ -97,7 +97,7 @@ function Footer() {
                   return (
                     <Link key={x.label} href={x.href}>
                       <div
-                        className={`hover:underline font-medium font-thin ${
+                        className={`hover:underline font-medium ${
                           theme === "light" ? "text-darkgrey" : "text-white"
                         }`}
                       >
@@ -127,7 +127,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="p-5 max-w-7xl mx-auto text-gray-400 font-thin">
+      <div className="p-5 max-w-7xl mx-auto">
         © All rights reserved to ZK Wallet
       </div>
     </>

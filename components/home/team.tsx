@@ -12,7 +12,7 @@ function Team() {
   return (
     <div id="team" className={`${theme === "light" ? "background-gd" : ""}`}>
       <div className="max-w-7xl mx-auto p-5 text-center py-12 lg:py-16">
-        <div className="text-[1.5rem] md:text-[2.5rem] text-light-gd font-extralight tracking-widest">
+        <div className="text-[1.5rem] md:text-[2.5rem] text-light-gd tracking-widest">
           {t("Meet Our Team")}
         </div>
         <FadeWrapper y={100} x={0}>
