@@ -75,7 +75,7 @@ function Navigation() {
       <div
         className={`flex items-center justify-between space-x-5 p-5 ${
           theme === "light" ? "text-black" : "text-white"
-        } z-[99] relative px-5 md:px-8`}
+        } z-[99] relative`}
       >
         <Link href="/">
           {theme === "light" ? (
