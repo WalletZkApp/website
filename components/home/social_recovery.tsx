@@ -14,7 +14,7 @@ function SocialRecovery() {
         <div
           className={`${
             theme === "light" ? "bg-white" : "bg-gray-800"
-          } drop-shadow-md flex flex-col lg:flex-row rounded-lg overflow-hidden`}
+          } drop-shadow-lg flex flex-col lg:flex-row rounded-lg overflow-hidden`}
         >
           <div className="lg:w-[30%] p-8 flex flex-col space-y-5">
             <div className="text-primary flex items-center space-x-3">

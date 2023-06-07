@@ -159,7 +159,7 @@ function Navigation() {
       <div
         className={`${menu ? "translate-x-0" : "translate-x-[-100%]"} ${
           theme === "light" ? "bg-white text-black" : "bg-background text-white"
-        } transition-all fixed left-0 top-0 h-[100vh] drop-shadow-md p-5 z-[99] flex flex-col space-y-8`}
+        } border-b transition-all fixed left-0 top-0 h-[100vh] drop-shadow-md p-5 z-[99] flex flex-col space-y-8`}
       >
         <div className="flex items-center space-x-5">
           <Link href="/">
