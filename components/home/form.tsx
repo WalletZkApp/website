@@ -1,5 +1,6 @@
 // Context
 import { useContext, useState } from "react";
+import { GetServerSideProps } from "next";
 import { ThemeContext } from "@/context/theme_context";
 import { useTranslations } from "next-intl";
 import React from "react";
@@ -12,12 +13,34 @@ import { IconButton } from "@mui/material";
 import GithubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
 
-function Form() {
+type Props = {
+  ip: string;
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  let ip = req.headers["x-real-ip"];
+  if (!ip) {
+    const forwardedFor = req.headers["x-forwarded-for"];
+    if (Array.isArray(forwardedFor)) {
+      ip = forwardedFor.at(0);
+    } else {
+      ip = forwardedFor?.split(",").at(0) ?? "Unknown";
+    }
+  }
+  return {
+    props: {
+      ip,
+    },
+  };
+};
+
+function Form(props: Props) {
   const { theme } = useContext(ThemeContext);
   const t = useTranslations("Index");
   const [joinedNewsletter, setJoinedNewsletter] = React.useState(false);
 
   const [agree, setAgree] = useState(false);
+  const ip_address = props.ip;
 
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -43,10 +66,10 @@ function Form() {
   const { errors } = formState;
 
   const onSubmitHandler = (input: any) => {
-    mailerlite(input.email, input.firstname, input.lastname)
+    mailerlite(input.email, input.firstname, input.lastname, ip_address)
   }
 
-  async function mailerlite(email: string, firstname: string, lastname: string) {
+  async function mailerlite(email: string, firstname: string, lastname: string, ip_address: string) {
     const response = await fetch('/api/mailerlite', {
       method: 'POST',
       body: JSON.stringify({
@@ -54,6 +77,7 @@ function Form() {
         firstname,
         lastname,
         email,
+        ip_address,
       }),
       headers: {
         'Content-Type': 'application/json'

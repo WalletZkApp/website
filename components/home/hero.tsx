@@ -1,5 +1,7 @@
 "use client";
 
+import { GetServerSideProps } from "next";
+
 // Translate
 import { useTranslations } from "use-intl";
 
@@ -13,7 +15,31 @@ import { ThemeContext } from "@/context/theme_context";
 // Toast
 import { ToastContainer, toast } from "react-toastify";
 
-function Hero() {
+import { GetServerSideProps } from "next";
+
+type Props = {
+  ip: string;
+};
+
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  let ip = req.headers["x-real-ip"];
+  if (!ip) {
+    const forwardedFor = req.headers["x-forwarded-for"];
+    if (Array.isArray(forwardedFor)) {
+      ip = forwardedFor.at(0);
+    } else {
+      ip = forwardedFor?.split(",").at(0) ?? "Unknown";
+    }
+  }
+  return {
+    props: {
+      ip,
+    },
+  };
+};
+
+function Hero(props: Props) {
   const t = useTranslations("Index");
   const { theme } = useContext(ThemeContext);
   const [loading, setLoading] = useState(false);
@@ -23,6 +49,7 @@ function Hero() {
   // MailerLite
   async function onSubmitHandler() {
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    const ip_address = props.ip;
     if (emailPattern.test(email)) {
       setLoading(true);
       try {
@@ -31,6 +58,7 @@ function Hero() {
           body: JSON.stringify({
             groupName: "joinlist",
             email,
+            ip_address,
           }),
           headers: {
             "Content-Type": "application/json",
