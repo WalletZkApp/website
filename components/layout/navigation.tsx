@@ -186,7 +186,7 @@ function Navigation() {
             </a>
           );
         })}
-        <Link href="/guardian">
+        <Link href="/guardian-registration">
           <button className="button-gd text-white font-semibold py-2 rounded-md w-full">
             Connect Wallet
           </button>
