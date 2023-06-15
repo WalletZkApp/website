@@ -24,7 +24,7 @@ function Form() {
     email: Yup.string()
       .required("Email is required")
       .email("Email is invalid"),
-    name: Yup.string()
+    firstname: Yup.string()
       .required("First name is required")
       .min(2, "First name must be at least 2 characters"),
     lastname: Yup.string()
@@ -51,7 +51,7 @@ function Form() {
       method: 'POST',
       body: JSON.stringify({
         groupName: "newsletter",
-        name,
+        firstname,
         lastname,
         email,
       }),
@@ -95,7 +95,7 @@ function Form() {
               className="border p-5 bg-transparent"
               required
               placeholder="First Name"
-              {...register('name')}
+              {...register('firstname')}
             />
             <div className="invalid-feedback">{errors.name?.message}</div>
             <input

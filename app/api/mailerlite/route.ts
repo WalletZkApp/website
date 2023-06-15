@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
   const body = {
     email: email,
     fields: {
-      firstname: firstname,
-      lastname: lastname,
+      name: firstname,
+      last_name: lastname,
     },
     groups: [`${groupId}`],
   };
