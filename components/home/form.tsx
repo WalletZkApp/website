@@ -12,17 +12,13 @@ import { IconButton } from "@mui/material";
 import GithubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
 
-type Props = {
-  ip: string;
-};
 
-function Form(props: Props) {
+function Form() {
   const { theme } = useContext(ThemeContext);
   const t = useTranslations("Index");
   const [joinedNewsletter, setJoinedNewsletter] = React.useState(false);
 
   const [agree, setAgree] = useState(false);
-  const ip_address = props.ip;
 
   // form validation rules
   const validationSchema = Yup.object().shape({
@@ -48,10 +44,10 @@ function Form(props: Props) {
   const { errors } = formState;
 
   const onSubmitHandler = (input: any) => {
-    mailerlite(input.email, input.firstname, input.lastname, ip_address)
+    mailerlite(input.email, input.firstname, input.lastname)
   }
 
-  async function mailerlite(email: string, firstname: string, lastname: string, ip_address: string) {
+  async function mailerlite(email: string, firstname: string, lastname: string) {
     const response = await fetch('/api/mailerlite', {
       method: 'POST',
       body: JSON.stringify({
@@ -59,7 +55,6 @@ function Form(props: Props) {
         firstname,
         lastname,
         email,
-        ip_address,
       }),
       headers: {
         'Content-Type': 'application/json'

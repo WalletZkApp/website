@@ -13,11 +13,8 @@ import { ThemeContext } from "@/context/theme_context";
 // Toast
 import { ToastContainer, toast } from "react-toastify";
 
-type Props = {
-  ip: string;
-};
 
-function Hero(props: Props) {
+function Hero() {
   const t = useTranslations("Index");
   const { theme } = useContext(ThemeContext);
   const [loading, setLoading] = useState(false);
@@ -27,7 +24,6 @@ function Hero(props: Props) {
   // MailerLite
   async function onSubmitHandler() {
     const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-    const ip_address = props.ip;
     if (emailPattern.test(email)) {
       setLoading(true);
       try {
@@ -36,7 +32,6 @@ function Hero(props: Props) {
           body: JSON.stringify({
             groupName: "joinlist",
             email,
-            ip_address,
           }),
           headers: {
             "Content-Type": "application/json",
