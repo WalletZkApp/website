@@ -43,7 +43,7 @@ export default async function LocaleLayout({
           name="description"
           content="The First Smart Contract Wallet on Mina Protocol, No Recovery Seed Phrase Required"
         />
-        <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />
+        {process.env.NEXT_PUBLIC_GA_TRACKING_ID && <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />}
       </head>
       <body suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={locale} messages={messages}>
