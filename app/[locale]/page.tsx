@@ -20,7 +20,31 @@ import OurSolution from "@/components/home/our_solution";
 import KeylessWallet from "@/components/home/keyless_wallet";
 import SocialRecovery from "@/components/home/social_recovery";
 
-export default function Page() {
+import { GetServerSideProps } from "next";
+
+type Props = {
+  ip: string;
+};
+
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  let ip = req.headers["x-real-ip"];
+  if (!ip) {
+    const forwardedFor = req.headers["x-forwarded-for"];
+    if (Array.isArray(forwardedFor)) {
+      ip = forwardedFor.at(0);
+    } else {
+      ip = forwardedFor?.split(",").at(0) ?? "Unknown";
+    }
+  }
+  return {
+    props: {
+      ip,
+    },
+  };
+};
+
+export default function Page(props: Props) {
   const { theme } = useContext(ThemeContext);
   return (
     <>
@@ -31,7 +55,7 @@ export default function Page() {
       >
         <div className="relative z-[1]">
           <Navigation />
-          <Hero />
+          <Hero ip={props.ip} />
           <Features />
           <OurSolution />
           <KeylessWallet />
@@ -39,7 +63,7 @@ export default function Page() {
           <Collection />
           <Team />
           <Investors />
-          <Form />
+          <Form ip={props.ip}/>
           <Footer />
         </div>
         <CookiesConsent />

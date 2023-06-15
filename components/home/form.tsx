@@ -1,6 +1,5 @@
 // Context
 import { useContext, useState } from "react";
-import { GetServerSideProps } from "next";
 import { ThemeContext } from "@/context/theme_context";
 import { useTranslations } from "next-intl";
 import React from "react";
@@ -15,23 +14,6 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 
 type Props = {
   ip: string;
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  let ip = req.headers["x-real-ip"];
-  if (!ip) {
-    const forwardedFor = req.headers["x-forwarded-for"];
-    if (Array.isArray(forwardedFor)) {
-      ip = forwardedFor.at(0);
-    } else {
-      ip = forwardedFor?.split(",").at(0) ?? "Unknown";
-    }
-  }
-  return {
-    props: {
-      ip,
-    },
-  };
 };
 
 function Form(props: Props) {
