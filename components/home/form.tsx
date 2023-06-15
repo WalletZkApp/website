@@ -97,7 +97,7 @@ function Form() {
               placeholder="First Name"
               {...register('firstname')}
             />
-            <div className="invalid-feedback">{errors.name?.message}</div>
+            <div className="invalid-feedback">{errors.firstname?.message}</div>
             <input
               className="border p-5 bg-transparent"
               required
