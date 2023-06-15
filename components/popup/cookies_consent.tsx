@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeContext } from "@/context/theme_context";
-import { deleteCookie, getCookie, setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { useContext, useEffect, useState } from "react";
 
 function CookiesConsent() {

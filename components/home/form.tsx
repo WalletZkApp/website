@@ -2,23 +2,73 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "@/context/theme_context";
 import { useTranslations } from "next-intl";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 // Mui
-import { Button, Checkbox, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import GithubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
 
 function Form() {
   const { theme } = useContext(ThemeContext);
   const t = useTranslations("Index");
+  const [joinedNewsletter, setJoinedNewsletter] = React.useState(false);
 
   const [agree, setAgree] = useState(false);
+
+  // form validation rules
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .required("Email is required")
+      .email("Email is invalid"),
+    name: Yup.string()
+      .required("First name is required")
+      .min(2, "First name must be at least 2 characters"),
+    lastname: Yup.string()
+      .required("Last name is required")
+      .min(2, "Last name must be at least 2 characters"),
+    agree: Yup.boolean()
+      .required("Agree is required")
+      .oneOf([true], "You must accept the terms and conditions"),
+  })
+
+  const formOptions = {
+    resolver: yupResolver(validationSchema),
+  }
+
+  const { handleSubmit, register, formState } = useForm(formOptions);
+  const { errors } = formState;
+
+  const onSubmitHandler = (input: any) => {
+    mailerlite(input.email, input.name, input.lastname)
+  }
+
+  async function mailerlite(email: string, name: string, lastname: string) {
+    const response = await fetch('/api/mailerlite', {
+      method: 'POST',
+      body: JSON.stringify({
+        groupName: "newsletter",
+        name,
+        lastname,
+        email,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    if (response.status === 200) {
+      setJoinedNewsletter(true);
+    }
+  }
 
   return (
     <div>
       <div className="max-w-7xl mx-auto p-5 py-12 lg:py-16">
         <div className="flex justify-center space-x-5">
-          <IconButton onClick={() => window.open("https://www.github.com")}>
+          <IconButton onClick={() => window.open("https://github.com/walletZkapp")}>
             <GithubIcon
               sx={{
                 fontSize: "64px",
@@ -26,7 +76,7 @@ function Form() {
               }}
             />
           </IconButton>
-          <IconButton onClick={() => window.open("https://www.telegram.com")}>
+          <IconButton onClick={() => window.open("https://t.me/walletZkApp")}>
             <TelegramIcon
               sx={{
                 fontSize: "64px",
@@ -35,44 +85,54 @@ function Form() {
             />
           </IconButton>
         </div>
-        <form className="flex flex-col space-y-6 mt-10">
-          <div className="text-[1.5rem] md:text-[2.5rem] text-center text-light-gd tracking-widest">
-            {t("Subscribe to Our Newsletter")}
-          </div>
-          <input
-            className="border p-5 bg-transparent"
-            required
-            placeholder="First Name"
-          />
-          <input
-            className="border p-5 bg-transparent"
-            required
-            placeholder="Last Name"
-          />
-          <input
-            className="border p-5 bg-transparent"
-            required
-            placeholder="Email"
-            type="email"
-          />
+        {joinedNewsletter && <div className="replaceForm"></div>}
+        {!joinedNewsletter &&
+          <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col space-y-6 mt-10">
+            <div className="text-[1.5rem] md:text-[2.5rem] text-center text-light-gd tracking-widest">
+              {t("Subscribe to Our Newsletter")}
+            </div>
+            <input
+              className="border p-5 bg-transparent"
+              required
+              placeholder="First Name"
+              {...register('name')}
+            />
+            <div className="invalid-feedback">{errors.name?.message}</div>
+            <input
+              className="border p-5 bg-transparent"
+              required
+              placeholder="Last Name"
+              {...register('lastname')}
+            />
+            <div className="invalid-feedback">{errors.lastname?.message}</div>
+            <input
+              className="border p-5 bg-transparent"
+              required
+              placeholder="Email"
+              type="email"
+              {...register('email')}
+            />
+            <div className="invalid-feedback">{errors.email?.message}</div>
 
-          <div className="flex space-x-3 px-1">
-            <div>
-              <input onClick={() => setAgree(!agree)} type="checkbox"></input>
+            <div className="flex space-x-3 px-1">
+              <div>
+                <input {...register('agree')} onClick={() => setAgree(!agree)} type="checkbox"></input>
+              </div>
+              <div>
+                {t(
+                  "I agree to receive e-mails from your company and your terms and conditions"
+                )}
+              </div>
+              <div className="invalid-feedback">{errors.agree?.message}</div>
             </div>
-            <div>
-              {t(
-                "I agree to receive e-mails from your company and your terms and conditions"
-              )}
-            </div>
-          </div>
-          <button
-            type="submit"
-            className="bg-primary hover:brightness-[1.1] py-4 text-white rounded-md"
-          >
-            Subscribe
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="bg-primary hover:brightness-[1.1] py-4 text-white rounded-md"
+            >
+              Subscribe
+            </button>
+          </form>
+        }
       </div>
     </div>
   );

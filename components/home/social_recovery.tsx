@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { useTranslations } from "next-intl";
 import SocialRecoveryCarousel from "../carousel/social_recovery_carousel";
@@ -32,7 +32,10 @@ function SocialRecovery() {
             >
               {t("Keep up to date with ZKWallet")}
             </div>
-            <button className="hover:brightness-[1.1] py-3 px-5 rounded-full bg-primary text-white mt-5 w-[150px]">
+            <button
+              onClick={() => window.open("https://twitter.com/walletZkApp")}
+              className="hover:brightness-[1.1] py-3 px-5 rounded-full bg-primary text-white mt-5 w-[150px]"
+            >
               {t("Learn More")}
             </button>
           </div>

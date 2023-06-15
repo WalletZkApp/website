@@ -1,7 +1,7 @@
 import { ThemeContext } from "@/context/theme_context";
 import FadeWrapper from "@/utils/fade_wrapper";
 import { useTranslations } from "next-intl";
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 function OurSolution() {
   const t = useTranslations("Index");
@@ -33,6 +33,14 @@ function OurSolution() {
             >
               {t(
                 "Join the staking revolution on Everstake and start earning passive income from your crypto holdings today"
+              )}
+              <br />
+              {t(
+                "Your assets stay securely stored in your original wallet, frozen during the staking period"
+              )}
+              <br />
+              {t(
+                "You have the freedom to unstake at your preferred time, with the assets becoming available for use after the blockchain's minimum unfreezing period has passed"
               )}
             </div>
             <div className="underline text-primary font-light md:text-[1.25rem]">

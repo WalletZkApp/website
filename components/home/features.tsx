@@ -70,21 +70,21 @@ const features = [
   },
   {
     icon: "/assets/icons/icon_2.png",
-    label: "Social Recover",
+    label: "Social Recovery",
     description:
-      "Zero-knowledge, resilient, anonymous system with time locks and multiple safety nets for fund recovery and privacy",
+      "We uses Zero Knowledge technology to enhance the security of our Smart Contract Wallet",
   },
   {
     icon: "/assets/icons/icon_3.png",
     label: "Onramp",
     description:
-      "Refers to a method or service that allows individuals to convert traditional fiat currency into cryptocurrencies",
+      "Convert fiat currency to cryptocurrencies seamlessly, Simplifies the transition into cryptocurrencies, enabling users to easily enter the digital asset world and utilize them for various purposes",
   },
   {
     icon: "/assets/icons/icon_4.png",
     label: "Shamir Service",
     description:
-      "Enhance wallet security: Shamir Secret Sharing distributes secrets among parties, ensuring protection against theft and loss",
+      "Enhance wallet security: Shamir Service distributes secrets among parties, ensuring protection against theft and loss",
   },
 ];
 

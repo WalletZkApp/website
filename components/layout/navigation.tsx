@@ -203,7 +203,7 @@ const menuList = [
     href: "/#features",
   },
   {
-    label: "Timeline",
+    label: "Collection",
     href: "/#collection",
   },
   {

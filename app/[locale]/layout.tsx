@@ -6,6 +6,7 @@ import ThemeHandler from "@/context/theme_context";
 // Multi Languages
 import { NextIntlClientProvider } from "next-intl";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import "react-toastify/dist/ReactToastify.css";
 
 export function generateStaticParams() {
   return [
@@ -15,6 +16,7 @@ export function generateStaticParams() {
     { locale: "id" },
     { locale: "cn" },
     { locale: "tr" },
+    { locale: "in" },
   ];
 }
 
@@ -35,14 +37,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        <title>ZK Wallet</title>
+        <title>ZK Keyless Wallet</title>
         <meta
           name="description"
-          content="With a ZK wallet, the transaction details are encrypted and the zero-knowledge proof ensures that the transaction is valid"
+          content="With a ZK Keyless Wallet, the transaction details are encrypted and the zero-knowledge proof ensures that the transaction is valid"
         />
       </head>
-      <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
-      <body>
+      <body suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeHandler>{children}</ThemeHandler>
         </NextIntlClientProvider>

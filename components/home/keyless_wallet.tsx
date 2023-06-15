@@ -18,11 +18,11 @@ function KeylessWallet() {
           <div className="w-full">
             <div className="flex flex-col space-y-5 md:space-y-8">
               <div className="md:text-[1.5rem] text-primary">
-                {t("Keyless Wallet")}
+                {t("Shamir Service")}
               </div>
               <div className="text-[1.5rem] md:text-[2rem] font-medium">
                 {t(
-                  "Discover the power of Shamir Secret Sharing for unparalleled security of your digital assets"
+                  "Discover the power of Shamir Service for unparalleled security of your digital assets"
                 )}
               </div>
               <div
@@ -35,7 +35,7 @@ function KeylessWallet() {
                 )}
                 .{" "}
                 {t(
-                  "With Shamir Secret Sharing, you can ensure that even if a share is compromised, your assets remain safe"
+                  "With Shamir Service, you can ensure that even if a share is compromised, your assets remain safe"
                 )}
               </div>
             </div>

@@ -36,16 +36,27 @@ export default function SocialRecoveryCarousel() {
         }}
         onSlideChange={(e) => setCurrentIndex(e.realIndex)}
       >
-        {communities.map((x) => {
+        {communities.map((x, index) => {
           return (
-            <SwiperSlide>
-              <div className="p-8 bg-white rounded-lg flex flex-col items-start space-y-8">
-                <img className="object-contain h-[2rem]" src={x.logo} alt="" />
-                <div className="md:text-[1.25rem] text-darkgrey h-[9rem]">
+            <SwiperSlide key={x.label + index}>
+              <div className="p-8 bg-white rounded-lg flex flex-col items-start h-full">
+                {x.logo.substring(0, 1) === "/" ? (
+                  <img
+                    className="object-contain h-[2rem]"
+                    src={x.logo}
+                    alt=""
+                  />
+                ) : (
+                  <div className="text-[1.25rem]">{x.logo}</div>
+                )}
+                <div className="md:text-[1.25rem] text-darkgrey mt-5">
                   {x.label}
                 </div>
-                <div className="flex space-x-3">
-                  <img src={x.icon} alt="" />
+                <div
+                  onClick={() => window.open(x.href)}
+                  className="flex space-x-3 mt-auto pt-5 cursor-pointer"
+                >
+                  <img className="h-[3rem] rounded-full" src={x.icon} alt="" />
                   <div>
                     <div className="font-medium text-black">{x.name}</div>
                     <div className="text-darkgrey">{x.username}</div>
@@ -98,48 +109,19 @@ export default function SocialRecoveryCarousel() {
 
 const communities = [
   {
-    logo: "/assets/social_recovery/enjin_logo.png",
-    label:
-      "ZKWallet is one of the most important backnones of Chainlink’s decentralized Mina network, we’re huge fans! Congrats...",
-    icon: "/assets/social_recovery/enjin_icon.png",
-    name: "Enjin Coin",
-    username: "@enjincoin_io",
-    href: "https://enjin.io/",
+    logo: "Daria | Everstake 🪶🇺🇦",
+    label: `ZkIgnite Cohort 2 from @MinaProtocol is almost under way (2 more sleeps), really excited to see the new proposals. Great too, to see @walletZkApp https://walletzk.app taking shape. Literally just added it to http://zkappsformina.com Have a look here..`,
+    icon: "/assets/social_recovery/avatar/avatar_1.png",
+    name: "Daria | Everstake",
+    username: "@DariaEverstake",
+    href: "https://everstake.one/",
   },
   {
-    logo: "/assets/social_recovery/stellar_logo.png",
-    label:
-      "We’re thrilled to award a grant to @zkwallet from the Mina Community. Supporting them in adding",
-    icon: "/assets/social_recovery/stellar_icon.png",
-    name: "Stellar",
-    username: "@stellar",
-    href: "https://stellar.org/",
-  },
-  {
-    logo: "/assets/social_recovery/enjin_logo.png",
-    label:
-      "ZKWallet is one of the most important backnones of Chainlink’s decentralized Mina network, we’re huge fans! Congrats...",
-    icon: "/assets/social_recovery/enjin_icon.png",
-    name: "Enjin Coin",
-    username: "@enjincoin_io",
-    href: "https://enjin.io/",
-  },
-  {
-    logo: "/assets/social_recovery/stellar_logo.png",
-    label:
-      "We’re thrilled to award a grant to @zkwallet from the Mina Community. Supporting them in adding",
-    icon: "/assets/social_recovery/stellar_icon.png",
-    name: "Stellar",
-    username: "@stellar",
-    href: "https://stellar.org/",
-  },
-  {
-    logo: "/assets/social_recovery/stellar_logo.png",
-    label:
-      "We’re thrilled to award a grant to @zkwallet from the Mina Community. Supporting them in adding",
-    icon: "/assets/social_recovery/stellar_icon.png",
-    name: "Stellar",
-    username: "@stellar",
-    href: "https://stellar.org/",
+    logo: "comMINAty",
+    label: `That's fantastic news! 🎉. I have to say that this first look looks incredibly sleek and user-friendly. Friends, what are your thoughts? Let's provide valuable feedback and suggestions to make this app truly exceptional! 💬`,
+    icon: "/assets/social_recovery/avatar/avatar_2.png",
+    name: "comMINAty",
+    username: "@minacryptocom",
+    href: "https://minacrypto.com/",
   },
 ];

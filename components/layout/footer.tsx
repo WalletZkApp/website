@@ -159,6 +159,10 @@ const languages = [
     flag: "/assets/flags/turkey.png",
     href: "/tr",
   },
+  {
+    flag: "/assets/flags/india.png",
+    href: "/in",
+  },
 ];
 
 const security = [
@@ -213,7 +217,7 @@ const menu = [
 const socials = [
   {
     icon: "/assets/social_media/twitter.png",
-    href: "https://twitter.com",
+    href: "https://twitter.com/walletZkApp",
   },
   {
     icon: "/assets/social_media/linkedin.png",
@@ -221,7 +225,7 @@ const socials = [
   },
   {
     icon: "/assets/social_media/telegram.png",
-    href: "https://telegram.com",
+    href: "https://t.me/walletZkApp",
   },
   {
     icon: "/assets/social_media/youtube.png",
@@ -229,7 +233,7 @@ const socials = [
   },
   {
     icon: "/assets/social_media/discord.png",
-    href: "https://discord.com",
+    href: "https://discord.gg/JUuBrnn3zx",
   },
 ];
 
