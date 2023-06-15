@@ -43,10 +43,10 @@ function Form() {
   const { errors } = formState;
 
   const onSubmitHandler = (input: any) => {
-    mailerlite(input.email, input.name, input.lastname)
+    mailerlite(input.email, input.firstname, input.lastname)
   }
 
-  async function mailerlite(email: string, name: string, lastname: string) {
+  async function mailerlite(email: string, firstname: string, lastname: string) {
     const response = await fetch('/api/mailerlite', {
       method: 'POST',
       body: JSON.stringify({

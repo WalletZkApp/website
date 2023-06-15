@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { headers } from "next/headers";
 import axios from "axios";
 
 const API_KEY = process.env.MAILERLITE_PRODUCTION_API_KEY;
@@ -9,6 +10,9 @@ const NEWSLETTER_GROUP_ID =
   process.env.MAILERLITE_PRODUCTION_NEWSLETTER_GROUP_ID;
 
 export async function POST(request: NextRequest) {
+  // Get the client's IP address from the request headers
+  const ip_address = headers().get("x-forwarded-for");
+
   const res = await request.json();
 
   const { email, firstname, lastname, groupName } = res;
@@ -22,6 +26,7 @@ export async function POST(request: NextRequest) {
 
   const body = {
     email: email,
+    ip_address: ip_address,
     fields: {
       name: firstname,
       last_name: lastname,

@@ -13,10 +13,6 @@ import { ThemeContext } from "@/context/theme_context";
 // Toast
 import { ToastContainer, toast } from "react-toastify";
 
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import * as Yup from "yup";
-
 function Hero() {
   const t = useTranslations("Index");
   const { theme } = useContext(ThemeContext);
