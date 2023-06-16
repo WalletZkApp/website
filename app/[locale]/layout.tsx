@@ -1,3 +1,4 @@
+import WalletProvider from "@/context/wallet_context";
 import "../globals.css";
 
 // Theme Context
@@ -45,7 +46,9 @@ export default async function LocaleLayout({
       </head>
       <body suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeHandler>{children}</ThemeHandler>
+          <ThemeHandler>
+            <WalletProvider>{children}</WalletProvider>
+          </ThemeHandler>
         </NextIntlClientProvider>
       </body>
     </html>

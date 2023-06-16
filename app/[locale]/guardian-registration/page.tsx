@@ -11,44 +11,17 @@ import { useTranslations } from "next-intl";
 
 // Context
 import { ThemeContext } from "@/context/theme_context";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { WalletContext } from "@/context/wallet_context";
 
 function Page() {
   const { theme } = useContext(ThemeContext);
+  const { getAccounts } = useContext(WalletContext);
   const t = useTranslations("Index");
-  const [mina, setMina] = useState();
-  const [isAuroInstalled, setIsAuroInstalled] = useState(false);
-  const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
-    // Using an IIFE
-    (async function getAccounts() {
-      if (typeof window !== undefined) {
-        // start by checking if window.ethereum is mina, indicating a wallet extension
-        const ethereumProviderInjected = typeof window.mina !== "undefined";
-        const isAuroInstalled = ethereumProviderInjected && window.mina.isAuro;
-        console.log("isAuroInstalled", isAuroInstalled);
-        setIsAuroInstalled(isAuroInstalled);
-        setMina(window.mina);
-        if (isAuroInstalled) {
-          connectWallet();
-        }
-      }
-    })();
-  }, [mina]);
-
-  async function connectWallet() {
-    if (isAuroInstalled) {
-      let accounts;
-      // Accounts is an array of string Mina addresses.
-      accounts = await mina.requestAccounts();
-      setAccounts(accounts);
-
-      // Show first 6 and last 4 characters of user's Mina account.
-      const display = `${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
-      console.log(`Connected to ${display}`);
-    }
-  }
+    getAccounts();
+  }, []);
 
   return (
     <>

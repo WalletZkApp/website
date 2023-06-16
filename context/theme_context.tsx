@@ -7,21 +7,16 @@ export const ThemeContext = createContext({
   changeTheme: (mode: string) => {},
 });
 
-export default function ThemeHandler({
-  children,
-}: {
+interface child {
   children: React.ReactNode;
-}) {
+}
+
+export default function ThemeHandler({ children }: child) {
   const [theme, setTheme] = useState("light");
 
   const changeTheme = (mode: string) => {
     localStorage.setItem("theme", mode.toString());
     setTheme(mode);
-  };
-
-  const value = {
-    theme: theme,
-    changeTheme: changeTheme,
   };
 
   useEffect(() => {
@@ -32,6 +27,8 @@ export default function ThemeHandler({
   }, []);
 
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, changeTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 }
