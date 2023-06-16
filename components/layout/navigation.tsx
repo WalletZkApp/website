@@ -25,7 +25,7 @@ function Navigation() {
             <div key={x.label} className="menu-parents">
               {x.label === "Guardian Registration" ? (
                 <Link
-                  className={`font-thin pb-1 ${
+                  className={`pb-1 ${
                     theme === "light" ? "text-darkgrey" : "text-white"
                   }`}
                   key={x.label}
@@ -36,7 +36,7 @@ function Navigation() {
                 </Link>
               ) : (
                 <a
-                  className={`font-thin pb-1 ${
+                  className={`pb-1 ${
                     theme === "light" ? "text-darkgrey" : "text-white"
                   }`}
                   key={x.label}

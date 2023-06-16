@@ -6,7 +6,7 @@ import ThemeHandler from "@/context/theme_context";
 // Multi Languages
 import { NextIntlClientProvider } from "next-intl";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export function generateStaticParams() {
   return [

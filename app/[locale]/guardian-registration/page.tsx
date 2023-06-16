@@ -19,7 +19,7 @@ function Page() {
   const [mina, setMina] = useState();
   const [isAuroInstalled, setIsAuroInstalled] = useState(false);
   const [accounts, setAccounts] = useState([]);
-  
+
   useEffect(() => {
     // Using an IIFE
     (async function getAccounts() {
@@ -43,13 +43,13 @@ function Page() {
       // Accounts is an array of string Mina addresses.
       accounts = await mina.requestAccounts();
       setAccounts(accounts);
-        
+
       // Show first 6 and last 4 characters of user's Mina account.
       const display = `${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
       console.log(`Connected to ${display}`);
     }
   }
-  
+
   return (
     <>
       <div
