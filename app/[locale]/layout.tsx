@@ -40,7 +40,7 @@ export default async function LocaleLayout({
         <title>ZK Keyless Wallet</title>
         <meta
           name="description"
-          content="With a ZK Keyless Wallet, the transaction details are encrypted and the zero-knowledge proof ensures that the transaction is valid"
+          content="The First Smart Contract Wallet on Mina Protocol. No Recovery Seed Phrase Required!"
         />
       </head>
       <body suppressHydrationWarning={true}>
