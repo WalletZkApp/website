@@ -84,7 +84,7 @@ function Page() {
                 placeholder="Company Name"
                 autoComplete="off"
                 required
-                maxLength={30}
+                maxLength={40}
                 minLength={5}
               />
               <input
@@ -122,7 +122,7 @@ function Page() {
                 placeholder="Address"
                 autoComplete="off"
                 required
-                maxLength={40}
+                maxLength={120}
                 minLength={5}
               />
               <input
@@ -131,7 +131,7 @@ function Page() {
                 placeholder="City"
                 autoComplete="off"
                 required
-                maxLength={15}
+                maxLength={30}
                 minLength={3}
               />
               <input
@@ -140,7 +140,7 @@ function Page() {
                 placeholder="State / Province"
                 autoComplete="off"
                 required
-                maxLength={15}
+                maxLength={30}
                 minLength={3}
               />
               <input
@@ -159,7 +159,7 @@ function Page() {
                 placeholder="Country"
                 autoComplete="off"
                 required
-                maxLength={15}
+                maxLength={40}
                 minLength={3}
               />
               <input
@@ -168,7 +168,7 @@ function Page() {
                 id="emailAddress"
                 placeholder="Email Address"
                 required
-                maxLength={15}
+                maxLength={40}
                 minLength={5}
               />
               <input
