@@ -4,6 +4,7 @@ import { createContext, useState } from "react";
 
 export const WalletContext = createContext({
   smartcontract: "",
+  account: "",
   getAccounts: () => {},
 });
 
@@ -11,6 +12,7 @@ export default function WalletProvider({ children }) {
   const [mina, setMina] = useState([]);
   const [isAuroInstalled, setIsAuroInstalled] = useState(false);
   const [accounts, setAccounts] = useState([]);
+  const [account, setAccount] = useState();
   const [smartcontract, setSmartcontract] = useState("");
 
   async function connectWallet() {
@@ -21,6 +23,7 @@ export default function WalletProvider({ children }) {
       setAccounts(accounts);
       // Show first 6 and last 4 characters of user's Mina account.
       const display = `${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`;
+      setAccount(accounts[0]);
       setSmartcontract(display);
       console.log(`Connected to ${display}`);
     }
@@ -41,7 +44,7 @@ export default function WalletProvider({ children }) {
   }
 
   return (
-    <WalletContext.Provider value={{ smartcontract, getAccounts }}>
+    <WalletContext.Provider value={{ smartcontract, getAccounts, account }}>
       {children}
     </WalletContext.Provider>
   );

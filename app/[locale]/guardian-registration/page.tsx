@@ -17,17 +17,15 @@ import Footer from "@/components/layout/footer";
 
 function Page() {
   const { theme } = useContext(ThemeContext);
-  const { smartcontract, getAccounts } = useContext(WalletContext);
+  const { getAccounts, account } = useContext(WalletContext);
 
   const t = useTranslations("Index");
 
-  useEffect(() => {
-    getAccounts();
-  }, []);
+  useEffect(() => {}, []);
 
   async function formSubmit(event: any): Promise<void> {
     event.preventDefault();
-    if (smartcontract !== "") {
+    if (account !== "") {
       const response = await fetch("/api/guardian", {
         method: "POST",
         body: JSON.stringify({
@@ -42,7 +40,7 @@ function Page() {
           country: event.target.country.value,
           email: event.target.emailAddress.value,
           website: event.target.website.value,
-          walletAddress: smartcontract,
+          walletAddress: account,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -85,6 +83,9 @@ function Page() {
                 id="companyName"
                 placeholder="Company Name"
                 autoComplete="off"
+                required
+                maxLength={30}
+                minLength={5}
               />
               <input
                 type="number"
@@ -92,12 +93,18 @@ function Page() {
                 id="registrationNumber"
                 placeholder="Registration Number"
                 autoComplete="off"
+                required
+                maxLength={15}
+                minLength={5}
               />
               <input
                 className="p-5 border bg-transparent"
                 id="companyShortDescription"
                 placeholder="Company Short Description"
                 autoComplete="off"
+                required
+                maxLength={50}
+                minLength={5}
               />
               <input
                 type="number"
@@ -105,24 +112,36 @@ function Page() {
                 id="phoneNumber"
                 placeholder="Phone Number"
                 autoComplete="off"
+                required
+                maxLength={15}
+                minLength={5}
               />
               <input
                 className="p-5 border bg-transparent"
                 id="address"
                 placeholder="Address"
                 autoComplete="off"
+                required
+                maxLength={40}
+                minLength={5}
               />
               <input
                 className="p-5 border bg-transparent"
                 id="city"
                 placeholder="City"
                 autoComplete="off"
+                required
+                maxLength={15}
+                minLength={3}
               />
               <input
                 className="p-5 border bg-transparent"
                 id="state"
                 placeholder="State / Province"
                 autoComplete="off"
+                required
+                maxLength={15}
+                minLength={3}
               />
               <input
                 type="number"
@@ -130,24 +149,36 @@ function Page() {
                 id="zip"
                 placeholder="ZIP / Postal Code"
                 autoComplete="off"
+                required
+                maxLength={10}
+                minLength={3}
               />
               <input
                 className="p-5 border bg-transparent"
                 id="country"
                 placeholder="Country"
                 autoComplete="off"
+                required
+                maxLength={15}
+                minLength={3}
               />
               <input
                 type="email"
                 className="p-5 border bg-transparent"
                 id="emailAddress"
                 placeholder="Email Address"
+                required
+                maxLength={15}
+                minLength={5}
               />
               <input
                 type="text"
                 className="p-5 border bg-transparent"
                 id="website"
                 placeholder="Website https://"
+                required
+                maxLength={40}
+                minLength={5}
               />
               <button
                 type="submit"
