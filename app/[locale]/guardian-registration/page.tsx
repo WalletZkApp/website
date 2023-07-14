@@ -11,17 +11,45 @@ import { useTranslations } from "next-intl";
 
 // Context
 import { ThemeContext } from "@/context/theme_context";
-import { useContext, useEffect } from "react";
+import { FormEvent, useContext, useEffect } from "react";
 import { WalletContext } from "@/context/wallet_context";
+import Footer from "@/components/layout/footer";
 
 function Page() {
   const { theme } = useContext(ThemeContext);
-  const { getAccounts } = useContext(WalletContext);
+  const { smartcontract, getAccounts } = useContext(WalletContext);
+
   const t = useTranslations("Index");
 
   useEffect(() => {
     getAccounts();
   }, []);
+
+  async function formSubmit(event: any): Promise<void> {
+    event.preventDefault();
+    if (smartcontract !== "") {
+      const response = await fetch("/api/guardian", {
+        method: "POST",
+        body: JSON.stringify({
+          displayName: event.target.companyName.value,
+          registrationNumber: event.target.registrationNumber.value,
+          description: event.target.companyShortDescription.value,
+          phonenumber: event.target.phoneNumber.value,
+          address: event.target.address.value,
+          city: event.target.city.value,
+          state: event.target.state.value,
+          zip: event.target.zip.value,
+          country: event.target.country.value,
+          email: event.target.emailAddress.value,
+          website: event.target.website.value,
+          walletAddress: smartcontract,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+  }
 
   return (
     <>
@@ -50,75 +78,74 @@ function Page() {
               className={`flex flex-col space-y-6 mt-12 ${
                 theme === "light" ? "text-black" : "text-white"
               }`}
+              onSubmit={formSubmit}
             >
               <input
                 className="p-5 border bg-transparent"
-                required
                 id="companyName"
                 placeholder="Company Name"
+                autoComplete="off"
               />
               <input
                 type="number"
                 className="p-5 border bg-transparent"
-                required
                 id="registrationNumber"
                 placeholder="Registration Number"
+                autoComplete="off"
               />
               <input
                 className="p-5 border bg-transparent"
-                required
                 id="companyShortDescription"
                 placeholder="Company Short Description"
+                autoComplete="off"
               />
               <input
                 type="number"
                 className="p-5 border bg-transparent"
-                required
                 id="phoneNumber"
                 placeholder="Phone Number"
+                autoComplete="off"
               />
               <input
                 className="p-5 border bg-transparent"
-                required
                 id="address"
                 placeholder="Address"
+                autoComplete="off"
               />
               <input
                 className="p-5 border bg-transparent"
-                required
                 id="city"
                 placeholder="City"
+                autoComplete="off"
               />
               <input
                 className="p-5 border bg-transparent"
-                required
                 id="state"
                 placeholder="State / Province"
+                autoComplete="off"
               />
               <input
                 type="number"
                 className="p-5 border bg-transparent"
-                required
                 id="zip"
                 placeholder="ZIP / Postal Code"
+                autoComplete="off"
               />
               <input
                 className="p-5 border bg-transparent"
-                required
                 id="country"
                 placeholder="Country"
+                autoComplete="off"
               />
               <input
                 type="email"
                 className="p-5 border bg-transparent"
-                required
                 id="emailAddress"
                 placeholder="Email Address"
               />
               <input
-                type="email"
+                type="text"
                 className="p-5 border bg-transparent"
-                required
                 id="website"
                 placeholder="Website https://"
               />
@@ -131,6 +158,7 @@ function Page() {
             </form>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );
