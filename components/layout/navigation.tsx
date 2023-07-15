@@ -21,7 +21,7 @@ function Navigation() {
 
   // Context
   const { theme, changeTheme } = useContext(ThemeContext);
-  const { smartcontract, getAccounts, accounts } = useContext(WalletContext);
+  const { smartcontract, getAccounts } = useContext(WalletContext);
 
   const handleScroll = () => {
     window.scrollY > 500 ? setFloating(true) : setFloating(false);
