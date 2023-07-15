@@ -14,19 +14,23 @@ import { ThemeContext } from "@/context/theme_context";
 import { useContext, useEffect, useState } from "react";
 import { WalletContext } from "@/context/wallet_context";
 import Footer from "@/components/layout/footer";
-import { CheckBox } from "@mui/icons-material";
+import { toast } from "react-toastify";
 
 function Page() {
   const { theme } = useContext(ThemeContext);
-  const { account } = useContext(WalletContext);
+  const { accounts, isAuroInstalled } = useContext(WalletContext);
   const [submitted, setSubmitted] = useState(false);
   const t = useTranslations("Index");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (!isAuroInstalled) {
+      toast("Aura wallet not found", { type: "error" });
+    }
+  }, [isAuroInstalled]);
 
   async function formSubmit(event: any): Promise<void> {
     event.preventDefault();
-    if (account !== "") {
+    if (accounts.length > 0) {
       const response = await fetch("/api/guardian", {
         method: "POST",
         body: JSON.stringify({
@@ -41,7 +45,7 @@ function Page() {
           country: event.target.country.value,
           email: event.target.emailAddress.value,
           website: event.target.website.value,
-          walletAddress: account,
+          walletAddress: accounts[0],
         }),
         headers: {
           "Content-Type": "application/json",
@@ -49,6 +53,8 @@ function Page() {
       });
       if (response.ok) {
         setSubmitted(true);
+      } else {
+        toast("Aura wallet not found", { type: "error" });
       }
     }
   }
@@ -61,7 +67,7 @@ function Page() {
         } transition-all`}
       >
         <Navigation />
-        {!submitted ? (
+        {isAuroInstalled ? (
           <div className="min-h-screen flex items-center justify-center text-center">
             <div className="flex flex-col max-w-7xl p-5 md:py-12 mx-auto w-full">
               <div className="text-gd text-[1.25rem] md:text-[2rem] font-semibold">
@@ -199,17 +205,12 @@ function Page() {
             <div className="min-h-screen flex items-center justify-center text-center">
               <div className="flex flex-col max-w-7xl p-5 md:py-12 mx-auto w-full">
                 <div className="text-gd text-[1.25rem] md:text-[2rem] font-semibold">
-                  {t("Guardian registration completed")}
+                  {t("Aura wallet is not installed")}
                 </div>
-                <div className="flex justify-center">
-                  <div className="bg-primary rounded-full flex justify-center mt-5">
-                    <IconButton>
-                      <CheckBox sx={{ fontSize: "3rem", color: "white" }} />
-                    </IconButton>
-                  </div>
-                </div>
-                <div className="text-gd text-[1.25rem] md:text-[2rem] font-semibold mt-6">
-                  {t("Please confirm your Email")}
+                <div className="text-gd text-[0.75rem] md:text-[1rem] font-semibold mt-6">
+                  {t(
+                    "You need to sign with your wallet to register as a guardian"
+                  )}
                 </div>
               </div>
             </div>
