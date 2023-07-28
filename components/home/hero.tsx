@@ -13,7 +13,6 @@ import { ThemeContext } from "@/context/theme_context";
 // Toast
 import { ToastContainer, toast } from "react-toastify";
 
-
 function Hero() {
   const t = useTranslations("Index");
   const { theme } = useContext(ThemeContext);

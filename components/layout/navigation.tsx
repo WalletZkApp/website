@@ -4,18 +4,34 @@ import { ThemeContext } from "@/context/theme_context";
 import { useContext, useEffect, useState } from "react";
 import { useTranslations } from "use-intl";
 
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
+import { WalletContext } from "@/context/wallet_context";
 
 function Navigation() {
   const t = useTranslations("Index");
-  const { theme, changeTheme } = useContext(ThemeContext);
+
+  // Menu
   const [menu, setMenu] = useState(false);
   const [floating, setFloating] = useState(false);
+
+  // Context
+  const { theme, changeTheme } = useContext(ThemeContext);
+  const { smartcontract, getAccounts } = useContext(WalletContext);
+
+  const handleScroll = () => {
+    window.scrollY > 500 ? setFloating(true) : setFloating(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    getAccounts();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const MenuComponents = () => {
     return (
@@ -25,7 +41,7 @@ function Navigation() {
             <div key={x.label} className="menu-parents">
               {x.label === "Guardian Registration" ? (
                 <Link
-                  className={`font-thin pb-1 ${
+                  className={`pb-1 ${
                     theme === "light" ? "text-darkgrey" : "text-white"
                   }`}
                   key={x.label}
@@ -36,7 +52,7 @@ function Navigation() {
                 </Link>
               ) : (
                 <a
-                  className={`font-thin pb-1 ${
+                  className={`pb-1 ${
                     theme === "light" ? "text-darkgrey" : "text-white"
                   }`}
                   key={x.label}
@@ -49,25 +65,20 @@ function Navigation() {
             </div>
           );
         })}
-        <button className="hover:brightness-[1.05] transition-all button-gd text-white font-semibold p-2 px-3 rounded-md">
-          Connect Wallet
-        </button>
+        {smartcontract === "" ? (
+          <Link href="/guardian-registration">
+            <button className="hover:brightness-[1.05] transition-all button-gd text-white font-semibold p-2 px-3 rounded-md">
+              Connect Wallet
+            </button>
+          </Link>
+        ) : (
+          <div className="py-2 px-5 border-[2px] border-primary">
+            {smartcontract}
+          </div>
+        )}
       </div>
     );
   };
-
-  const handleScroll = () => {
-    if (window.scrollY > 500) {
-      setFloating(true);
-    } else {
-      setFloating(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <>
@@ -75,7 +86,11 @@ function Navigation() {
       <div
         className={`flex items-center justify-between space-x-5 p-5 ${
           theme === "light" ? "text-black" : "text-white"
-        } z-[99] relative`}
+        } ${
+          floating
+            ? `${theme === "light" ? "bg-white" : "bg-background"} fixed top-0`
+            : "top-[-100px]"
+        } z-[99] w-full transition-all`}
       >
         <Link href="/">
           {theme === "light" ? (
@@ -112,49 +127,6 @@ function Navigation() {
       </div>
       {/* Normal Navigation End  */}
 
-      {/* Floating Navigation ( On Scroll )  */}
-      <div
-        className={`${
-          floating ? "translate-y-0" : "translate-y-[-100%]"
-        } transition-all left-0 top-0 fixed ${
-          theme === "light" ? "bg-white text-black" : "bg-background text-white"
-        } w-full flex items-center justify-between p-5 z-[99] space-x-5 px-5 md:px-8`}
-      >
-        <Link href="/">
-          {theme === "light" ? (
-            <img className="h-[2rem] md:h-[2.5rem]" src="/logo.png" alt="" />
-          ) : (
-            <img
-              className="h-[2rem] md:h-[2.5rem]"
-              src="/logo_white.png"
-              alt=""
-            />
-          )}
-        </Link>
-        <div className="flex items-center space-x-1 md:space-x-8">
-          <IconButton
-            onClick={() =>
-              theme === "light" ? changeTheme("dark") : changeTheme("light")
-            }
-          >
-            {theme === "light" ? (
-              <LightModeIcon />
-            ) : (
-              <DarkModeIcon sx={{ color: "white" }} />
-            )}
-          </IconButton>
-          <div className="md:hidden">
-            <IconButton onClick={() => setMenu(!menu)}>
-              <MenuIcon
-                sx={{ color: `${theme === "light" ? "black" : "white"}` }}
-              />
-            </IconButton>
-          </div>
-          <MenuComponents />
-        </div>
-      </div>
-      {/* Floating Navigation End  */}
-
       {/* Mobile Navigation  */}
       <div
         className={`${menu ? "translate-x-0" : "translate-x-[-100%]"} ${
@@ -186,11 +158,15 @@ function Navigation() {
             </a>
           );
         })}
-        <Link href="/guardian">
-          <button className="button-gd text-white font-semibold py-2 rounded-md w-full">
-            Connect Wallet
-          </button>
-        </Link>
+        {smartcontract === "" ? (
+          <Link href="/guardian-registration">
+            <button className="hover:brightness-[1.05] transition-all button-gd text-white font-semibold p-2 px-3 rounded-md">
+              Connect Wallet
+            </button>
+          </Link>
+        ) : (
+          <div className="py-2 px-5 border border-primary">{smartcontract}</div>
+        )}
       </div>
       {/* Mobile Navigation End  */}
     </>

@@ -1,3 +1,4 @@
+import WalletProvider from "@/context/wallet_context";
 import "../globals.css";
 
 // Theme Context
@@ -6,7 +7,7 @@ import ThemeHandler from "@/context/theme_context";
 // Multi Languages
 import { NextIntlClientProvider } from "next-intl";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.min.css";
 
 import GoogleAnalytics from "@/components/google/GoogleAnalytics"; 
 
@@ -47,7 +48,9 @@ export default async function LocaleLayout({
       </head>
       <body suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeHandler>{children}</ThemeHandler>
+          <ThemeHandler>
+            <WalletProvider>{children}</WalletProvider>
+          </ThemeHandler>
         </NextIntlClientProvider>
       </body>
     </html>

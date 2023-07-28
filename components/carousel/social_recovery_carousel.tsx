@@ -47,7 +47,7 @@ export default function SocialRecoveryCarousel() {
                     alt=""
                   />
                 ) : (
-                  <div className="text-[1.25rem]">{x.logo}</div>
+                  <div className="text-black text-[1.25rem]">{x.logo}</div>
                 )}
                 <div className="md:text-[1.25rem] text-darkgrey mt-5">
                   {x.label}

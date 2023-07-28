@@ -16,13 +16,13 @@ function Team() {
           {t("Meet Our Team")}
         </div>
         <FadeWrapper y={100} x={0}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5 md:mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 mt-5 md:mt-12">
             {team.map((x) => {
               return (
                 <div
                   onClick={() => window.open(x.href)}
                   key={x.label}
-                  className={`p-12 py-24 flex flex-col items-center ${
+                  className={`p-12 py-24 md:py-12 md:px-5 lg:px-12 lg:py-24 flex flex-col items-center ${
                     theme === "light" ? "bg-white" : "bg-gray-800"
                   } drop-shadow-lg rounded-lg hover:translate-y-[-5%] transition-all cursor-pointer`}
                 >
