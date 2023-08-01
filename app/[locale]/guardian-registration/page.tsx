@@ -31,9 +31,13 @@ function Page() {
   async function formSubmit(event: any): Promise<void> {
     event.preventDefault();
     if (accounts.length > 0) {
-      const response = await fetch("/api/guardian", {
+      const BASE_URL = process.env.ZK_WALLET_USER_SERVICE;
+      const API_URL = BASE_URL + "/api/v1/auth/guardian/email/register";
+
+      const response = await fetch(API_URL, {
         method: "POST",
         body: JSON.stringify({
+          companyName: event.target.companyName.value,
           displayName: event.target.companyName.value,
           registrationNumber: event.target.registrationNumber.value,
           description: event.target.companyShortDescription.value,
@@ -46,6 +50,7 @@ function Page() {
           email: event.target.emailAddress.value,
           website: event.target.website.value,
           walletAddress: accounts[0],
+          password: event.target.password.value,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -190,6 +195,14 @@ function Page() {
                   required
                   maxLength={40}
                   minLength={5}
+                />
+                <input
+                  type="password"
+                  className="p-5 border bg-transparent"
+                  id="password"
+                  placeholder="Password"
+                  required
+                  minLength={6}
                 />
                 <button
                   type="submit"
