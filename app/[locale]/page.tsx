@@ -36,7 +36,6 @@ export default function Page() {
           <OurSolution />
           <KeylessWallet />
           <SocialRecovery />
-          <Collection />
           <Team />
           <Investors />
           <Form />
