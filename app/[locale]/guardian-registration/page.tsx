@@ -50,7 +50,6 @@ function Page() {
           email: event.target.emailAddress.value,
           website: event.target.website.value,
           walletAddress: accounts[0],
-          password: event.target.password.value,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -104,7 +103,6 @@ function Page() {
                   minLength={5}
                 />
                 <input
-                  type="number"
                   className="p-5 border bg-transparent"
                   id="registrationNumber"
                   placeholder="Registration Number"
@@ -119,18 +117,17 @@ function Page() {
                   placeholder="Company Short Description"
                   autoComplete="off"
                   required
-                  maxLength={50}
+                  maxLength={100}
                   minLength={5}
                 />
                 <input
-                  type="number"
                   className="p-5 border bg-transparent"
                   id="phoneNumber"
                   placeholder="Phone Number"
                   autoComplete="off"
                   required
-                  maxLength={15}
-                  minLength={5}
+                  maxLength={10}
+                  minLength={10}
                 />
                 <input
                   className="p-5 border bg-transparent"
@@ -195,14 +192,6 @@ function Page() {
                   required
                   maxLength={40}
                   minLength={5}
-                />
-                <input
-                  type="password"
-                  className="p-5 border bg-transparent"
-                  id="password"
-                  placeholder="Password"
-                  required
-                  minLength={6}
                 />
                 <button
                   type="submit"
