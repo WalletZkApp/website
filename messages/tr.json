@@ -66,6 +66,8 @@
     "The First Smart Contract Wallet on Mina Protocol": "Mina Protokolü'ndeki İlk Akıllı Sözleşme Cüzdanı",
     "No Recovery Seed Phrase Required": "Kurtarma Tohum Cümlesi Gerekmez",
     "Convert fiat currency to cryptocurrencies seamlessly, Simplifies the transition into cryptocurrencies, enabling users to easily enter the digital asset world and utilize them for various purposes": "Kullanıcıların platformumuza kaydolmak ve kullanmaya başlamak için sorunsuz ve uygun bir yol. Başlamayı kolaylaştırır, hizmetlerimize sorunsuz bir geçiş sağlar.",
-    "We uses Zero Knowledge technology to enhance the security of our Smart Contract Wallet": "Akıllı Sözleşme Cüzdanımızın güvenliğini artırmak için Sıfır Bilgi teknolojisini kullanıyoruz."
+    "We uses Zero Knowledge technology to enhance the security of our Smart Contract Wallet": "Akıllı Sözleşme Cüzdanımızın güvenliğini artırmak için Sıfır Bilgi teknolojisini kullanıyoruz.",
+    "You need to sign with your wallet to register as a guardian": "You need to sign with your wallet to register as a guardian.",
+    "Aura wallet is not installed": "Aura wallet is not installed"
   }
 }

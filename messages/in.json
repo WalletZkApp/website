@@ -66,6 +66,8 @@
     "The First Smart Contract Wallet on Mina Protocol": "मीना प्रोटोकॉल पर पहला स्मार्ट कॉन्ट्रैक्ट वॉलेट",
     "No Recovery Seed Phrase Required": "पुनर्प्राप्ति बीज वाक्यांश की आवश्यकता नहीं है",
     "Convert fiat currency to cryptocurrencies seamlessly, Simplifies the transition into cryptocurrencies, enabling users to easily enter the digital asset world and utilize them for various purposes": "फिएट मुद्रा को सहजता से क्रिप्टोकरेंसी में बदलें। क्रिप्टोकरेंसी में परिवर्तन को सरल बनाता है, जिससे उपयोगकर्ता आसानी से डिजिटल संपत्ति की दुनिया में प्रवेश कर सकते हैं और विभिन्न उद्देश्यों के लिए उनका उपयोग कर सकते हैं।",
-    "We uses Zero Knowledge technology to enhance the security of our Smart Contract Wallet": "हम अपने स्मार्ट कॉन्ट्रैक्ट वॉलेट की सुरक्षा बढ़ाने के लिए जीरो नॉलेज तकनीक का उपयोग करते हैं"
+    "We uses Zero Knowledge technology to enhance the security of our Smart Contract Wallet": "हम अपने स्मार्ट कॉन्ट्रैक्ट वॉलेट की सुरक्षा बढ़ाने के लिए जीरो नॉलेज तकनीक का उपयोग करते हैं",
+    "You need to sign with your wallet to register as a guardian": "You need to sign with your wallet to register as a guardian.",
+    "Aura wallet is not installed": "Aura wallet is not installed"
   }
 }

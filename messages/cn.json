@@ -52,7 +52,7 @@
     "Staking on Everstake": "在Everstake上质押",
     "Join the staking revolution on Everstake and start earning passive income from your crypto holdings today": "加入Everstake上的质押革命，从今天开始通过您的加密货币持有获取被动收入",
     "Your assets stay securely stored in your original wallet, frozen during the staking period": "您的资产将安全存储在原始钱包中，在质押期间被冻结。",
-    "You have the freedom to unstake at your preferred time, with the assets becoming available for use after the blockchain's minimum unfreezing period has passed": "您可以在您喜欢的时间解除质押，资产在区块链的最低解冻期过后可供使用", 
+    "You have the freedom to unstake at your preferred time, with the assets becoming available for use after the blockchain's minimum unfreezing period has passed": "您可以在您喜欢的时间解除质押，资产在区块链的最低解冻期过后可供使用",
     "Learn More": "了解更多",
     "Buy": "购买",
     "Buy crypto on Mina Protocol": "在Mina协议上购买加密货币",
@@ -66,6 +66,8 @@
     "The First Smart Contract Wallet on Mina Protocol": "Mina协议上的首个智能合约钱包",
     "No Recovery Seed Phrase Required": "无需恢复种子短语",
     "Convert fiat currency to cryptocurrencies seamlessly, Simplifies the transition into cryptocurrencies, enabling users to easily enter the digital asset world and utilize them for various purposes": "对用户来说，这是一种无缝便捷的方式，可以注册并开始使用我们的平台。它简化了入门过程，确保顺利过渡到我们的服务。",
-    "We uses Zero Knowledge technology to enhance the security of our Smart Contract Wallet": "我们使用零知识技术来增强我们的智能合约钱包的安全性."
+    "We uses Zero Knowledge technology to enhance the security of our Smart Contract Wallet": "我们使用零知识技术来增强我们的智能合约钱包的安全性.",
+    "You need to sign with your wallet to register as a guardian": "You need to sign with your wallet to register as a guardian.",
+    "Aura wallet is not installed": "Aura wallet is not installed"
   }
 }
