@@ -20,6 +20,8 @@ import OurSolution from "@/components/home/our_solution";
 import KeylessWallet from "@/components/home/keyless_wallet";
 import SocialRecovery from "@/components/home/social_recovery";
 
+import "./reactCOIServiceWorker";
+
 export default function Page() {
   const { theme } = useContext(ThemeContext);
   return (

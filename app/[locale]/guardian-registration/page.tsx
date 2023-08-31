@@ -15,8 +15,6 @@ import { useContext, useEffect, useState } from "react";
 import { WalletContext } from "@/context/wallet_context";
 import Footer from "@/components/layout/footer";
 import { toast } from "react-toastify";
-
-import "./reactCOIServiceWorker";
 import GuardianZkappWorkerClient from "./GuardianZkappWorkerClient";
 import { PublicKey, Field, UInt32, PrivateKey } from "snarkyjs";
 
