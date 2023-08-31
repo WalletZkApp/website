@@ -9,7 +9,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import "react-toastify/dist/ReactToastify.min.css";
 
-import GoogleAnalytics from "@/components/google/GoogleAnalytics"; 
+import GoogleAnalytics from "@/components/google/GoogleAnalytics";
 
 export function generateStaticParams() {
   return [
@@ -44,7 +44,11 @@ export default async function LocaleLayout({
           name="description"
           content="The First Smart Contract Wallet on Mina Protocol, No Recovery Seed Phrase Required"
         />
-        {process.env.NEXT_PUBLIC_GA_TRACKING_ID && <GoogleAnalytics GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID} />}
+        {process.env.NEXT_PUBLIC_GA_TRACKING_ID && (
+          <GoogleAnalytics
+            GA_TRACKING_ID={process.env.NEXT_PUBLIC_GA_TRACKING_ID}
+          />
+        )}
       </head>
       <body suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={locale} messages={messages}>
