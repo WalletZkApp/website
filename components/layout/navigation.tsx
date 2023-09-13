@@ -65,17 +65,6 @@ function Navigation() {
             </div>
           );
         })}
-        {smartcontract === "" ? (
-          <Link href="/guardian-registration">
-            <button className="hover:brightness-[1.05] transition-all button-gd text-white font-semibold p-2 px-3 rounded-md">
-              Connect Wallet
-            </button>
-          </Link>
-        ) : (
-          <div className="py-2 px-5 border-[2px] border-primary">
-            {smartcontract}
-          </div>
-        )}
       </div>
     );
   };
@@ -158,15 +147,6 @@ function Navigation() {
             </a>
           );
         })}
-        {smartcontract === "" ? (
-          <Link href="/guardian-registration">
-            <button className="hover:brightness-[1.05] transition-all button-gd text-white font-semibold p-2 px-3 rounded-md">
-              Connect Wallet
-            </button>
-          </Link>
-        ) : (
-          <div className="py-2 px-5 border border-primary">{smartcontract}</div>
-        )}
       </div>
       {/* Mobile Navigation End  */}
     </>
