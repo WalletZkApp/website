@@ -6,5 +6,5 @@ const withNextIntl = require("next-intl/plugin")(
 module.exports = withNextIntl({
   // Other Next.js configuration ...
   experimental: { appDir: true },
-  output: 'export',
+  // output: 'export',
 });
