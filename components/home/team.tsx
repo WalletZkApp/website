@@ -62,16 +62,16 @@ const team: member[] = [
     href: "https://twitter.com/IamZKdevETH",
   },
   {
-    image: "/assets/team/team_3.png",
-    label: "Abishek Sira Chandrashekar",
-    job: "Co-Founder / CTO",
-    href: "https://www.linkedin.com/in/abhishek-sira-chandrashekar-821244b7/",
-  },
-  {
     image: "/assets/team/team_2.png",
     label: "Axel Arifin",
     job: "Co-Founder / CMO",
     href: "https://www.linkedin.com/in/axel-arifin-99aba7143/",
+  },
+  {
+    image: "",
+    label: "Nguyen Manh Tung",
+    job: "Fullstack Developer",
+    href: "",
   },
 ];
 
